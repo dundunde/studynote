@@ -677,13 +677,22 @@ Automatic merge failed; fix conflicts and then commit the result.
 - 用git pull 拉取来合并
 - 然后再push
 
+#### git pull
 
+`git pull `将远程分支的提交和本地提交merge，它可能会产生新的提交记录
 
+**`git pull = git fetch + git merge`** 
 
+1. 默认情况下
 
+    - 如果本地分支与远程分支的提交历史是「线性的」（本地没有新提交，远程有新提交），会执行「快进合并（fast-forward）」，此时**不会产生新的提交记录**，只是将本地分支指针直接移动到远程分支的最新提交。
+    - 如果本地分支有独立的新提交，远程分支也有新提交（历史出现分叉），合并时会生成一个**新的合并提交（merge commit）**，此时会产生一条新的提交记录。
 
+2. 变基(`git pull --rebase`)
 
+    这种情况下会执行「变基合并」，将本地的新提交「嫁接」到远程提交之后，**不会产生新的合并提交**，提交历史会保持线性。
 
+    
 
 
 

@@ -75,8 +75,10 @@ v.共计
 
     *n.*起源; 出身
 
-3. conflict [ˈkɒnflɪkt]
-
-    n.争执; 矛盾心理; 冲突; 严重分歧
+3. conflict [ˈkɒnflɪkt]n.争执; 矛盾心理; 冲突; 严重分歧
 
     v.冲突
+
+4. experiment  [ɪkˈsperɪmənt] n.实验
+
+
