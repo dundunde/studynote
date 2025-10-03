@@ -81,4 +81,11 @@ v.共计
 
 4. experiment  [ɪkˈsperɪmənt] n.实验
 
+5. genius [ˈdʒiːniəs] n.天才; 天赋;
+
+6. complete [kəmˈpliːt] adj.完全的，完整的; 完成的
+
+7. complex [ˈkɒmpleks] adj. 复杂的; 复合的
+
+8. complicated [ˈkɒmplɪkeɪtɪd] adj.复杂的; 难处理的
 

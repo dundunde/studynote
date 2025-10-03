@@ -86,7 +86,9 @@ git commit命令，`-m`后面输入的是本次提交的说明，
 
 ### 撤销修改
 
-#### 撤销工作区修改
+#### git checkout、reset
+
+##### 撤销工作区修改
 
 `git checkout -- filename`
 
@@ -99,7 +101,7 @@ git commit命令，`-m`后面输入的是本次提交的说明，
 >
 > `--`很重要，没有`--`就变成了"切换到另一个分支"的命令
 
-#### 撤销暂存区
+##### 撤销暂存区
 
 `git reset HEAD <file>`
 
@@ -108,6 +110,62 @@ git commit命令，`-m`后面输入的是本次提交的说明，
 `git reset`既可以回退版本，也可以把暂存区修改回退到工作区。当使用`HEAD`时表示使用最新版本
 
 该命令表示把<u>暂存区的文件file从暂存区放回到工作区，然后让暂存区状态和HEAD指向的版本的状态一致。</u>如果想要再把工作区修改撤销，参考1.7.1
+
+#### git restore
+
+1. 丢弃工作区修改
+
+    `git restore file.txt`将文件恢复到**最近一次提交（或暂存区）的状态**。
+
+2. 从暂存区撤销文件
+
+    如果你已经用 `git add` 将文件加入暂存区（即 `git status` 显示为 `changes to be committed`），可以用 `git restore --staged <文件名>` 将文件从暂存区撤回到工作区（保留工作区的修改）。
+
+    `````
+    # 将 file.txt 从暂存区撤回（取消 git add 的效果）
+    git restore --staged file.txt
+    `````
+
+3. 从特定提交/分支恢复文件
+
+    可以通过 `--source` 参数指定一个提交哈希、分支名等，将该版本中的文件**恢复到工作区**。
+
+    1. 从指定版本恢复文件
+
+        `````
+        #从上次提交（HEAD）恢复 file.txt 到工作区
+        git restore --source=HEAD file.txt
+        `````
+
+    2. 从指定分支恢复
+
+        `````
+        # 从分支 dev 恢复 file.txt 到工作区
+        git restore --source=dev file.txt
+        `````
+
+    还可以使用`--staged`在恢复文件的同时**把恢复的文件添加的暂存区**（相当于执行了 `git add file.txt`）
+
+    `````
+    # 从分支 dev 恢复 file.txt 到工作区，并将恢复的文件添加到暂存区
+    git restore --source=dev --staged file.txt
+    `````
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+
+
+
 
 ### 删除文件
 
@@ -692,9 +750,23 @@ Automatic merge failed; fix conflicts and then commit the result.
 
     这种情况下会执行「变基合并」，将本地的新提交「嫁接」到远程提交之后，**不会产生新的合并提交**，提交历史会保持线性。
 
-    
+    #### git fetch
 
+当我们使用`git remote -v`可以查看远程分支,如下，
 
+`````
+$ git remote -v
+origin  git@github.com:dundunde/learngit.git (fetch)
+origin  git@github.com:dundunde/learngit.git (push)
+`````
+
+`git fetch`把远程的信息同步到本地，但不干扰本地的工作
+
+`git fetch [storgename] [branchname]`
+
+- git fetch 获取默认远程仓库(origin)的最新信息
+- git fetch storgename 获取指定远程仓库（如 storgename）的更新
+- git fetch storgename branchname 获取远程特定分支（如 storgename/branchname ）的更新
 
 
 
