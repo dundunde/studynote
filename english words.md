@@ -142,7 +142,7 @@ v.共计
 
      n.租费,租用
 
-    adj.租用的，出租的
+     adj.租用的，出租的
 
 2. rent [rent] v.租用  n.租金
 
@@ -162,35 +162,171 @@ v.共计
 
 9. pit [pɪt] n.井，煤矿，修理加油站   v.使竞争，使有凹陷 v.凹陷
 
-10.  passenget [ˈpæsɪndʒə(r)] n.乘客
+10. passenget [ˈpæsɪndʒə(r)] n.乘客
 
 11. resource [rɪˈsɔːs , rɪˈzɔːs] n.资源，物力，财力，办法
 
 12. understaffed [ˌʌndəˈstɑ:ft]  adj.人员不足的，人手不够的
 
-     staff   [stɑːf]  n.全体职工，行政人员，拐杖   v.任职于..
+       staff   [stɑːf]  n.全体职工，行政人员，拐杖   v.任职于..
 
 13. shoulder [ˈʃəʊldə(r)] n.肩膀  v.承担，推开
 
 14. intern  [ˈɪntɜːn]  n.实习生，扣留   v.拘留，关押  同“interne”，同“internee”
 
-     interned  ['ɪntɜnd] intern的过去式和过去分词
+       interned  ['ɪntɜnd] intern的过去式和过去分词
 
 15. virus  [ˈvaɪrəs] n.病毒
 
-16. froze [frəʊz] v.(使)结冰，冷冻，冷藏，冻结(资金)
+      antivirus [ˈæntivaɪrəs] adj.防病毒的
+
+16. freeze [friːz] v.结冰，冷冻   n.冻结，冰冻(期)
+
+      过去式:froze 过去分词:frozed
+
+      froze [frəʊz] v.(使)结冰，冷冻，冷藏，冻结(资金)
 
 17. infect  [ɪnˈfekt]  v.传染; 使感染,影响
 
 18. turn out 结果是，出来
 
-     turn around (使)转身，(使)好转，改变意见
+      it turns out that 结果是...
 
-     turn up 出现
+       turn around (使)转身，(使)好转，改变意见
 
-     turn down 关小，拒绝，驳回
+       turn up 出现
+
+       turn down 关小，拒绝，驳回
 
 19. act up  复发，炫耀，功能失常
+
+20. tech  [tek] n.技术，技 术员
+
+      technique [tekˈniːk] n.技能，技术,技巧
+
+      technical  [ˈteknɪkl] adj.技术的，专业的
+
+      technology  [tekˈnɒlədʒi] n.科技
+
+21. explanation [ˌekspləˈneɪʃn] n.解释，说明
+
+22. podcast  [ˈpɒdkɑːst] n.博客
+
+23. cause [kɔːz]  v.导致，引起   n.原因，理由
+
+24. punch  [pʌntʃ] n.重拳击打，打孔机，影响力  v.用拳猛击，(用压孔机)冲孔
+
+25. phrase [freɪz] n.惯用法，词组
+
+26. positive  [ˈpɒzətɪv] adj.积极乐观的，建设性的，明确的
+
+      positively [ˈpɒzətɪvli]  adj.明确地，肯定地
+
+27. stairs  [steəz] n.楼梯
+
+28. hurry v.匆忙 n..急忙
+
+      hurry up 使赶紧
+
+29. right out 明白的，坦率的
+
+30. pregnant  [ˈpreɡnənt] adj.怀孕的
+
+31. browse [braʊz] v.浏览，翻阅
+
+32. specifically  [spəˈsɪfɪkli]  adv.特有地，明确地;
+
+33. couple  [ˈkʌpl] n.两个，夫妻，几个  v.加上，结合
+
+34. basic  [ˈbeɪsɪk] adj.基础的，基本的
+
+      basically  [ˈbeɪsɪkli] adv.基本上
+
+35. contact  [ˈkɒntækt] n.联系，联络，接触 v.联系，联络
+
+36. accident [ˈæksɪdənt] n.意外，偶然，事故
+
+      accidentally [ˌæksɪˈdɛntəli] adv.偶然地
+
+37. meet up 偶然碰到
+
+38. slip  [slɪp] v.滑倒，脱落  n.差错  
+
+      slipped slipped 过去式 过去分词
+
+      slipped in my mind 忘记
+
+      > your name has just slipped my mind
+
+39. in a bit of a hurry 
+
+      > can you dirve faster i'm in a bit of  a hurry 
+
+40. fit [fɪt] v.适合，合身，试穿  adj.健康的，合适的  n.合身，匹配
+
+41. barely   adv.仅仅，勉强，几乎不
+
+42. terrible with 不擅长
+
+43. is there a bank **around here**?
+
+44. neighborhood ['neɪbə(r)ˌhʊd] n. 地区，街区
+
+45. conference [ˈkɒnfərəns] n.会议，研讨会，商讨
+
+46. foreign  [ˈfɒrən] adj.外国的，外交的，陌生的 
+
+      foreigner [ˈfɒrənə(r)] n.外国人
+
+      foreign exchange n.外汇
+
+47. exchange [ɪksˈtʃeɪndʒ] n.v.交换，交流
+
+48. define v.阐明，限定
+
+      definitely  [ˈdefɪnətli] adj.明显地，明确地
+
+49. remind  [rɪˈmaɪnd] v.提醒，使想起
+
+50. predicament  [prɪˈdɪkəmənt] n.困境，窘迫
+
+51. integrate  [ˈɪntɪɡreɪt] v.合并，整合，融入群体
+
+52. platform  [ˈplætfɔːm] n.讲台，平台
+
+53. cryptocurrency  /ˈkrɪp.təʊˌkʌr.ən.si/ n.加密电子货币
+
+     cryptography [ krɪpˈtɒɡrəfi] n.密码学
+
+54. physics [ˈfɪzɪks] n.物理学，物力现象
+
+55. physical [ˈfɪzɪkl] adj.身体的，物质的，物理学的
+
+56. spot  [spɒt] n.地点，斑点，少量
+
+     v.注意到，让步
+
+     adj.立即支付的
+
+     spot market n.现货市场
+
+57. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
  
 
