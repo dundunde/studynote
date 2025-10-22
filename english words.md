@@ -312,23 +312,31 @@ v.共计
 
 57. 
 
+## 抖音
 
+1. ex [eks] n.前任
 
+2. extern [ɪkˈstɜːnl] adj.外面的，外表的
 
+3. externally [ɪk'stɜ:nəlɪ] adv.外表的
 
+4. stuff  /stʌf/ n.物品，东西    ...以及泛指说或做的事
 
+    > you probably told her i love you and stuff too
+    >
+    > 你可能也跟她说了我爱你之类的话
 
+5. date [deɪt] n.日期，年代，约会   v.确定..的日期，过时，谈恋爱
 
+    dated (过去式，过去分词) 
 
+6. clingy ['klɪŋɪ] adj.过于依赖别人的，紧身的
 
+7. real [ˈriːəl] adj.真的，真实的 
 
+    really [ˈriːəli] adj.事实上，真正的
 
-
-
-
-
-
- 
+    reality [riˈæləti] n.现实，事实
 
 
 
