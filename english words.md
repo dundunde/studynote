@@ -168,45 +168,45 @@ v.共计
 
 12. understaffed [ˌʌndəˈstɑ:ft]  adj.人员不足的，人手不够的
 
-       staff   [stɑːf]  n.全体职工，行政人员，拐杖   v.任职于..
+        staff   [stɑːf]  n.全体职工，行政人员，拐杖   v.任职于..
 
 13. shoulder [ˈʃəʊldə(r)] n.肩膀  v.承担，推开
 
 14. intern  [ˈɪntɜːn]  n.实习生，扣留   v.拘留，关押  同“interne”，同“internee”
 
-       interned  ['ɪntɜnd] intern的过去式和过去分词
+        interned  ['ɪntɜnd] intern的过去式和过去分词
 
 15. virus  [ˈvaɪrəs] n.病毒
 
-      antivirus [ˈæntivaɪrəs] adj.防病毒的
+       antivirus [ˈæntivaɪrəs] adj.防病毒的
 
 16. freeze [friːz] v.结冰，冷冻   n.冻结，冰冻(期)
 
-      过去式:froze 过去分词:frozed
+       过去式:froze 过去分词:frozed
 
-      froze [frəʊz] v.(使)结冰，冷冻，冷藏，冻结(资金)
+       froze [frəʊz] v.(使)结冰，冷冻，冷藏，冻结(资金)
 
 17. infect  [ɪnˈfekt]  v.传染; 使感染,影响
 
 18. turn out 结果是，出来
 
-      it turns out that 结果是...
+       it turns out that 结果是...
 
-       turn around (使)转身，(使)好转，改变意见
+        turn around (使)转身，(使)好转，改变意见
 
-       turn up 出现
+        turn up 出现
 
-       turn down 关小，拒绝，驳回
+        turn down 关小，拒绝，驳回
 
 19. act up  复发，炫耀，功能失常
 
 20. tech  [tek] n.技术，技 术员
 
-      technique [tekˈniːk] n.技能，技术,技巧
+       technique [tekˈniːk] n.技能，技术,技巧
 
-      technical  [ˈteknɪkl] adj.技术的，专业的
+       technical  [ˈteknɪkl] adj.技术的，专业的
 
-      technology  [tekˈnɒlədʒi] n.科技
+       technology  [tekˈnɒlədʒi] n.科技
 
 21. explanation [ˌekspləˈneɪʃn] n.解释，说明
 
@@ -220,13 +220,13 @@ v.共计
 
 26. positive  [ˈpɒzətɪv] adj.积极乐观的，建设性的，明确的
 
-      positively [ˈpɒzətɪvli]  adj.明确地，肯定地
+       positively [ˈpɒzətɪvli]  adj.明确地，肯定地
 
 27. stairs  [steəz] n.楼梯
 
 28. hurry v.匆忙 n..急忙
 
-      hurry up 使赶紧
+       hurry up 使赶紧
 
 29. right out 明白的，坦率的
 
@@ -240,27 +240,27 @@ v.共计
 
 34. basic  [ˈbeɪsɪk] adj.基础的，基本的
 
-      basically  [ˈbeɪsɪkli] adv.基本上
+       basically  [ˈbeɪsɪkli] adv.基本上
 
 35. contact  [ˈkɒntækt] n.联系，联络，接触 v.联系，联络
 
 36. accident [ˈæksɪdənt] n.意外，偶然，事故
 
-      accidentally [ˌæksɪˈdɛntəli] adv.偶然地
+       accidentally [ˌæksɪˈdɛntəli] adv.偶然地
 
 37. meet up 偶然碰到
 
 38. slip  [slɪp] v.滑倒，脱落  n.差错  
 
-      slipped slipped 过去式 过去分词
+       slipped slipped 过去式 过去分词
 
-      slipped in my mind 忘记
+       slipped in my mind 忘记
 
-      > your name has just slipped my mind
+       > your name has just slipped my mind
 
 39. in a bit of a hurry 
 
-      > can you dirve faster i'm in a bit of  a hurry 
+       > can you dirve faster i'm in a bit of  a hurry 
 
 40. fit [fɪt] v.适合，合身，试穿  adj.健康的，合适的  n.合身，匹配
 
@@ -276,15 +276,15 @@ v.共计
 
 46. foreign  [ˈfɒrən] adj.外国的，外交的，陌生的 
 
-      foreigner [ˈfɒrənə(r)] n.外国人
+       foreigner [ˈfɒrənə(r)] n.外国人
 
-      foreign exchange n.外汇
+       foreign exchange n.外汇
 
 47. exchange [ɪksˈtʃeɪndʒ] n.v.交换，交流
 
 48. define v.阐明，限定
 
-      definitely  [ˈdefɪnətli] adj.明显地，明确地
+       definitely  [ˈdefɪnətli] adj.明显地，明确地
 
 49. remind  [rɪˈmaɪnd] v.提醒，使想起
 
@@ -296,7 +296,7 @@ v.共计
 
 53. cryptocurrency  /ˈkrɪp.təʊˌkʌr.ən.si/ n.加密电子货币
 
-     cryptography [ krɪpˈtɒɡrəfi] n.密码学
+      cryptography [ krɪpˈtɒɡrəfi] n.密码学
 
 54. physics [ˈfɪzɪks] n.物理学，物力现象
 
@@ -304,13 +304,101 @@ v.共计
 
 56. spot  [spɒt] n.地点，斑点，少量
 
-     v.注意到，让步
+      v.注意到，让步
 
-     adj.立即支付的
+      adj.立即支付的
 
-     spot market n.现货市场
+      spot market n.现货市场
 
-57. 
+57. knock over [nɒk ˈəʊvə(r)] 偷窃，碰翻，撞倒
+
+     knock off  停止(工作),下班
+
+58. knock  [nɒk] v.敲，碰 n.敲击声，撞击
+
+59. fall  [fɔːl] v.落下，摔倒 n.落下，垮台
+
+60. ruin [ˈruːɪn] n.v.毁灭毁坏   v.使破产
+
+61. explode [ɪkˈspləʊd] v.使爆炸，(感情)爆发，激增
+
+     explicit  [ɪkˈsplɪsɪt] adj.易于理解的; 明确的; 直言的
+
+     explore [ɪkˈsplɔː(r)] v.探索，探讨
+
+     explain  [ɪkˈspleɪn] v.解释，说明
+
+     exploit [ɪkˈsplɔɪt ] v.利用，剥削，榨取，开采  n.英勇行为
+
+62. watch out 当心
+
+63. tire v.(使)疲劳，困倦，厌烦  n.轮胎
+
+64. accident ['æksɪdənts] n.意外，事故，机遇
+
+65. coincidence [kəʊˈɪnsɪdəns] n.巧合
+
+66. mean v.意思是，打算，意味着   adj.刻薄的 
+
+67. accept  [əkˈsept] v.接受，同意，承担，忍受
+
+68. seem [siːm] v.好像，似乎，看来
+
+69. anyway adv.无论如何，不管怎样，总之
+
+70. any 
+
+71. badly adv.差，非常
+
+72. hurt [hɜːt] v.使...受伤，弄伤，使伤心  adj.受伤的  n.伤心 
+
+     hurt hurt 过去式，过去分词
+
+73. insurance [ɪnˈʃʊərəns] n.保险
+
+74. ankle  [ˈæŋkl] n.脚踝，踝关节
+
+75. break  [breɪk] v.弄坏，中断  n.休息，暂停，骨折
+
+     broke [brəʊk] adj.身无分文的，破产的 v.弄坏(break的过去式)
+
+     broken  [ˈbrəʊkən] adj.破损的，中断的(break的过去分词)
+
+76. leave v.离开，抛下，保留  n.假期，准许
+
+77. ambulance  [ˈæmbjələns] n.救护车
+
+78. appointment [əˈpɔɪntmənt] n.预约，任命，职位
+
+     appoint   [əˈpɔɪnt] v.任命，委派，安排
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ## 抖音
 
