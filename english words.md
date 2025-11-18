@@ -193,9 +193,9 @@ v.共计
        it turns out that 结果是...
 
         turn around (使)转身，(使)好转，改变意见
-
+    
         turn up 出现
-
+    
         turn down 关小，拒绝，驳回
 
 19. act up  复发，炫耀，功能失常
@@ -426,7 +426,180 @@ v.共计
 
     reality [riˈæləti] n.现实，事实
 
+8. disorder [dɪsˈɔːdə(r)] n.杂乱，混乱
 
+9. universe [ˈjuːnɪvɜːs] n.宇宙，经验领域
+
+
+
+
+
+
+
+## 常见物品
+
+### 厨具
+
+1. pan  [pæn] n.平底锅 v.淘金，(在浅锅中)烹调食物
+
+2. fan [fæn] n.扇子，风扇，迷 v.扇（风），煽动
+
+3. pot [pɒt] n.罐子，容器，锅  v.把..栽入盆中，台球 vi.随手射击
+
+4. stove [stəʊv]  n.炉子，厨灶
+
+5. toaster [ˈtəʊstə(r)] n.烤面包机
+
+6. kettle [ˈketl] n.(烧水用的)壶
+
+7. oven [ˈʌvn] n.烤箱，烤炉
+
+    ### 衣服
+
+    1. shirt [ʃɜːt] n.衬衫
+    2. t-shirt
+    3. skirt [skɜːt] n.裙子，(连衣裙)下摆 v.位于...边缘，绕开，避开
+    4. shorts  [ʃɔːts] n.短裤
+    5. jeans [dʒiːnz] n.牛仔裤
+    6. belt [belt]  n.腰带，传送带 v.痛打
+    7. sock [sɒk] n.短袜，(用拳头)猛击  v.重击，给..穿袜
+    8. dress n.连衣裙 v.穿衣，打扮
+    9. hoodie ['hʊdɪ] n.连帽衫
+    10. coat [kəʊt] n.外套，大衣，皮毛，涂料层  v.给...涂上一层，覆盖
+
+
+
+## BBC
+
+### breakfast
+
+1. appetite  [ˈæpɪtaɪt] n.食欲，胃口
+
+2. pastry [ˈpeɪstri] n.糕点，油酥糕点
+
+3. bowl [bəʊl] n.碗，盆，一碗的量
+
+4. professor [prəˈfesə(r)] n.教授
+
+    profess  [prəˈfes] v.声称，宣称，信奉
+
+5. nutrient [ˈnjuːtriənt] n.营养品，养分
+
+    nutrition [njuˈtrɪʃn] n.营养
+
+    nutritious [njuˈtrɪʃəs] adj.有营养的
+
+6. science  [ˈsaɪəns] n.科学，技术
+
+    scientific n.科学上的，细致严谨的
+
+    scientist  [ˈsaɪəntɪst] n.科学家
+
+7. host  [həʊst] n.主人，东道主，节目主持人  v.主持，主办活动
+
+8. progress  [ˈprəʊɡres , prəˈɡres]  n.v.进步，前进
+
+9. program  [ˈprəʊɡræm] n.程序，节目，计划 v.为..制定计划
+
+10. support  [səˈpɔːt]  n.v.支持，帮助，资助  
+
+11. meme [mi:m] n.梗
+
+12. pauper [ˈpɔ:pə(r)] n.穷人
+
+13. particular [pəˈtɪkjələ(r)] adj.特定的，特殊的
+
+    particularly adv.特别，尤其
+
+14. express v.表达，表示  adj.明确的，特快的 n.特快列车，长途汽车，快递服务
+
+    expression  [ɪkˈspreʃn]  n.表达，表情
+
+15. expert [ˈekspɜːt] n.行家  adj.专业的，娴熟的
+
+16. quiz [kwɪz] n.知识竞赛，小测验  v.询问，盘问
+
+17. survey  n.v.调查,勘测
+
+18. cereal  [ˈsɪəriəl] n.谷物，谷类食物
+
+19. later adv.较晚地，以后  adj.后来的，以后的
+
+20. process [ˈprəʊses , prəˈses] n.过程   v.加工，处理
+
+21. metabolism  [məˈtæbəlɪzəm] n.新陈代谢
+
+22. spike n.尖锐物，防滑鞋钉，猛增
+
+23. slight [slaɪt] adj.轻微的，瘦小的 n.冷落 v.轻视
+
+    slightly  [ˈslaɪtli] adv.轻微，身材瘦小
+
+24. burn  [bɜːn] v.燃烧，烧毁，发烫，晒伤 n.烧伤，烫伤
+
+25. instance [ˈɪnstəns] n.例子 v.举..为例
+
+26. significant [sɪɡˈnɪfɪkənt] adj.重要的，显著的
+
+    significantly adv.有重大意义的，显著地
+
+27. noun [naʊn] n.名词
+
+    verb n.动词
+
+28. refer  [rɪˈfɜː(r)] v.提及，推荐，指引
+
+    refer to 指的是，描述，提到，查阅
+
+29. chemical [ˈkemɪkl] adj.化学的
+
+30. convert v.(使)转变，改造
+
+31. engage [ɪnˈɡeɪdʒ] v.参与，吸引
+
+32. encounter n.v.遭遇，偶遇 
+
+33. enhance [ɪnˈhɑːns] v.提高，增强，改进
+
+34. energy [ˈenədʒi] n.精力，力气，能力
+
+    energize [ˈenədʒaɪz] v.加强
+
+    energetic [ˌenəˈdʒetɪk] adj.积极主动的，精力旺盛的，剧烈的
+
+35. sharp  [ʃɑːp] adj.锋利的，敏锐的，严厉的
+
+    sharply  [ˈʃɑ:pli] adv.严厉地，明确地
+
+36. increase  n.v.增加，增长
+
+37. rapid [ˈræpɪd]  adj.瞬间的，快速的 
+
+    rapidly ['ræpɪdlɪ]  adv.快速地，迅速地
+
+38. sudden ajd.突然的
+
+    suddenly  [ˈsʌdənli] adv.意外地，忽然地
+
+39. measure  [ˈmeʒə(r)] v.衡量，测量 n.措施，尺度 
+
+40. 
+
+41. 
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
 
 
 
