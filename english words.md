@@ -193,9 +193,9 @@ v.共计
        it turns out that 结果是...
 
         turn around (使)转身，(使)好转，改变意见
-    
+        
         turn up 出现
-    
+        
         turn down 关小，拒绝，驳回
 
 19. act up  复发，炫耀，功能失常
@@ -429,6 +429,40 @@ v.共计
 8. disorder [dɪsˈɔːdə(r)] n.杂乱，混乱
 
 9. universe [ˈjuːnɪvɜːs] n.宇宙，经验领域
+
+10. terror  [ˈterə(r)] n.恐怖，恐怖的缘由，恐怖行为，令人讨厌的人
+
+    night terrors 夜惊症
+
+    her entire body trembled in sheer **terror** moments before boarding the aircraft...
+
+    登机前片刻，她整个人因纯粹的恐惧而颤抖不已...
+
+11. tremble [ˈtrembl] v.颤抖 n.战栗
+
+12. sheer [ʃɪə(r)] adv.完全地，全然，垂直地 adj.完全的，全然的，陡峭的，绝对的
+
+13. board n.(木)板，棋盘，董事会 v.上船/火车/飞机/汽车
+
+14. paralysis [pəˈræləsɪs]  n.麻痹，瘫痪，中风，无能
+
+15. nightmare  [ˈnaɪtmeə(r)] n.噩梦，可怕的事
+
+16. get around to 抽出时间来做...
+
+17. have a cold 感冒
+
+18. premiere [prɪˈmɪr] n.首映  v.首次公演(戏剧，音乐，电影)
+
+19. sit through v.一直挺到结束，耐着性子看完(或听完)
+
+     
+
+     
+
+     
+
+     
 
 
 
