@@ -456,7 +456,17 @@ v.共计
 
 19. sit through v.一直挺到结束，耐着性子看完(或听完)
 
-     
+20. through [θruː] 穿过，通过
+
+21. refer  v.提及，涉及，推荐，指引
+
+     reference n.提及，查询，引号，参考书目，推荐信  adj.供参考的  v.引用  
+
+22. typical  [ˈtɪpɪkl] adj.典型的，特有的，一贯的，平常的
+
+     typically [ˈtɪpɪkli] adv.典型地，代表性地，通常
+
+23. 
 
      
 
@@ -464,13 +474,23 @@ v.共计
 
      
 
+     
+
+       
+
+       
+
+       
+
+       
 
 
 
 
 
 
-## 常见物品
+
+## 常见用语
 
 ### 厨具
 
@@ -488,18 +508,27 @@ v.共计
 
 7. oven [ˈʌvn] n.烤箱，烤炉
 
-    ### 衣服
 
-    1. shirt [ʃɜːt] n.衬衫
-    2. t-shirt
-    3. skirt [skɜːt] n.裙子，(连衣裙)下摆 v.位于...边缘，绕开，避开
-    4. shorts  [ʃɔːts] n.短裤
-    5. jeans [dʒiːnz] n.牛仔裤
-    6. belt [belt]  n.腰带，传送带 v.痛打
-    7. sock [sɒk] n.短袜，(用拳头)猛击  v.重击，给..穿袜
-    8. dress n.连衣裙 v.穿衣，打扮
-    9. hoodie ['hʊdɪ] n.连帽衫
-    10. coat [kəʊt] n.外套，大衣，皮毛，涂料层  v.给...涂上一层，覆盖
+### 衣服
+
+1. shirt [ʃɜːt] n.衬衫
+2. t-shirt
+3. skirt [skɜːt] n.裙子，(连衣裙)下摆 v.位于...边缘，绕开，避开
+4. shorts  [ʃɔːts] n.短裤
+5. jeans [dʒiːnz] n.牛仔裤
+6. belt [belt]  n.腰带，传送带 v.痛打
+7. sock [sɒk] n.短袜，(用拳头)猛击  v.重击，给..穿袜
+8. dress n.连衣裙 v.穿衣，打扮
+9. hoodie ['hʊdɪ] n.连帽衫
+10. coat [kəʊt] n.外套，大衣，皮毛，涂料层  v.给...涂上一层，覆盖
+
+### 国家
+
+1. Greece  [griːs] n.希腊
+2. Greek [ɡriːk] n.希腊语，希腊人
+3. Athens  ['æθənz] n.雅典
+4. Spain [speɪn] n.西班牙
+5. Sparta  [ˈspɑ:tə] n.斯巴达
 
 
 
@@ -617,23 +646,205 @@ v.共计
 
 39. measure  [ˈmeʒə(r)] v.衡量，测量 n.措施，尺度 
 
-40. 
+     
 
-41. 
+     
 
-    
+### city citizen
 
-    
+1. generally  [ˈdʒenrəli] adv.笼统地，通常地，普遍地
 
-    
+2. kind n.种类   adj.体贴的，仁慈的
 
-    
+    kind to 对...友好
 
-    
+3. club  [klʌb] n.俱乐部
 
-    
+4. society  [səˈsaɪəti] n.社会
 
-    
+5. right n.权利 v.矫正
+
+6. in return for 作为…的回报 
+
+7. response  [rɪˈspɒns] n.答复，反应
+
+    respond v.回答，做出反应
+
+    responsible adj.有责任的，可靠的
+
+    responsibility [rɪˌspɒnsəˈbɪləti] n.责任，义务，职责，过失
+
+8. interest v.使感兴趣
+
+9. presenter [prɪˈzentə(r)] n.节目主持人,提出者
+
+10. fix [fɪks] v.固定，安排，修理  n.解决方案，困境，定位
+
+11. land [lænd] n.陆地，土地，国度  v.降落，着陆，跌落
+
+12. tax   [tæks] n.税   v.对...征税，耗尽
+
+13. obey [əˈbeɪ]  v.服从，遵守
+
+14. term n.学期，条款，术语，期限  v.把..称为
+
+15. set of 一套
+
+16. vote  [vəʊt] v.投票，表决，选举，提议 n.选票，投票总数，表决，选举
+
+17. political [pəˈlɪtɪkl] adj.政治的 
+
+     politician  [ˌpɒləˈtɪʃn] n.政治家，政客
+
+18. engage  [ɪnˈɡeɪdʒ] v.参与，吸引，雇佣，适应
+
+19. symbol [ˈsɪmbl] n.象征，标志，符号，记号
+
+20. state  [steɪt] v.陈述，公布 n.状态，州 adj.国家的 
+
+21. reveal [rɪˈviːl] v.揭示，展示
+
+22. review [rɪˈvjuː] n.v.评审，检查，回顾，反思
+
+23. correct [kəˈrekt] adj.正确的，恰当的  v.改正，纠正
+
+24. council [ˈkaʊnsl] n.委员会，地方议会
+
+25. assembly [əˈsembli] n.议会，立法机构
+
+     assemble  [əˈsembl] v.聚集，收集，组装
+
+26. propose [prəˈpəʊz] v.提议，打算，提名，求婚
+
+27. improve [ɪmˈpruːv] v.改进，提高
+
+     improvement n.改善
+
+28. fountain n.喷泉
+
+29. pipe [paɪp] n.管道，烟斗,管乐器  v.用管子输送，用线路系统输送，用管乐器演奏
+
+30. curriculum [kəˈrɪkjələm] n.课程
+
+     curricula [kəˈrɪkjələ]  n.课程，总课程(curriculum 的复数)
+
+31. attend  [əˈtend] v.出席，参加
+
+     attend to 致力于
+
+32. found  v.建立，创办  v.发现，找到(find的过去式)
+
+33. founder v.失败，倒塌，沉没,摔倒 v.破坏，使摔倒，使沉没  n.创始人，创建者 
+
+34. appoint  [əˈpɔɪnt] v.任命，委派
+
+     appointment [əˈpɔɪntmənt] n.预约，约定，任命，职位
+
+     appointed [ə'pɔɪntɪd] adj.指定的，约定的  v.任命(appoint 的过去式和过去分词)
+
+35. disappointed adj.失望的，灰心的
+
+     disappointed at 对..失望
+
+     disappointed by 对……感到失望 
+
+36. erosion [ɪˈrəʊʒn] n.腐蚀，削弱，减少
+
+37. democratic [ˌdeməˈkrætɪk] adj.民主(制度的)
+
+     democratically  [ˌdemə'krætɪklɪ] adv.民主地
+
+     democratic election 民主选举
+
+     democracy n.民主(制度)，民主国家
+
+38. election  [ɪˈlekʃn] n.选举，当选
+
+39. institution [ˌɪnstɪˈtjuːʃn] n.机构，制度，习俗
+
+40. parliament  [ˈpɑːləmənt] n.议会
+
+41. gradual  [ˈɡrædʒuəl] adj.逐渐的，平缓的
+
+42. weak  [wiːk] adj.虚弱的，无力的，萧条的
+
+43. weaken  [ˈwiːkən] v.(使)虚弱，削弱，动摇，使损坏
+
+44. confidence n.自信，信赖
+
+     confident[ˈkɒnfɪdənt] adj.自信的，肯定的
+
+45. inference [ˈɪnfərəns] n.推理，推断，推论
+
+     infer v.推断，推理，暗示
+
+46. mirror [ˈmɪrə(r)] n.镜子，反光镜，真实写照，反映 v.反映，反射
+
+47. in office 执政，在任
+
+     in power 掌权
+
+     out of office 离职
+
+48. accountable [əˈkaʊntəbl] ajd.有责任的
+
+     account n.账号，账单  v.认为是，解释
+
+49. impress  [ɪmˈpres] v.使敬佩，给..留下深刻印象
+
+     impressive  adj.令人印象深刻的
+
+50. explain  [ɪkˈspleɪn] v.解释，辩解
+
+51. rather  [ˈrɑːðə(r) , ˌrɑːˈðɜː(r)] adv.相当，有点儿，反而  
+
+     rather than 而不是
+
+52. strike v.碰撞，突击，给人...印象，罢工   n.罢工，袭击
+
+53. pin [pɪn] n.别针，大头针，没价值的东西  v.压住，钉住，别住
+
+54. take sth/someone seriously 认真对待
+
+55. serious  [ˈsɪriəs] adj.严重的，重要的，认真的，大量的
+
+     seriously adv.严肃地，认真地，非常
+
+56. deserve  [dɪˈzɜːv]  v.应得，值得
+
+57. intend  [ɪnˈtend] v.打算，计划,想要
+
+     intention  [ɪnˈtenʃn] n.意图，打算 
+
+58. recap n.胎面翻新的轮胎; 重述要点 v.翻新胎面；扼要重述 
+
+59. worthy  [ˈwɜːði] adj.值得..的，可敬的  n.大人物，知名人士
+
+60. specific [spəˈsɪfɪk] ajd.明确的，独特的
+
+     specifically adv.特有地，明确地
+
+61. worksheet [ˈwɜ:kʃi:t] n.工作表，学习单
+
+62. episode   [ˈepɪsəʊd] n.一集，一节
+
+63. obey [əˈbeɪ] v.服从，遵守
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
