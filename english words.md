@@ -460,29 +460,33 @@ v.共计
 
 21. refer  v.提及，涉及，推荐，指引
 
-     reference n.提及，查询，引号，参考书目，推荐信  adj.供参考的  v.引用  
+      reference n.提及，查询，引号，参考书目，推荐信  adj.供参考的  v.引用  
 
 22. typical  [ˈtɪpɪkl] adj.典型的，特有的，一贯的，平常的
 
-     typically [ˈtɪpɪkli] adv.典型地，代表性地，通常
+      typically [ˈtɪpɪkli] adv.典型地，代表性地，通常
 
-23. 
+23.  fortune       [ˈfɔːtʃuːn]   n.大笔的钱，命运，运气
 
-     
+24. take for granted      认为...理所当然，想当然 
 
-     
+25. grant [ɡrɑːnt]      n.拨款  v.授予，承认
 
-     
+      
 
-     
+      
 
-       
+      
 
-       
+      
 
-       
+        
 
-       
+        
+
+        
+
+        
 
 
 
@@ -728,9 +732,9 @@ v.共计
 
      curricula [kəˈrɪkjələ]  n.课程，总课程(curriculum 的复数)
 
-31. attend  [əˈtend] v.出席，参加
+31. attend  [əˈtend]        v.出席，参加
 
-     attend to 致力于
+     attend to            致力于
 
 32. found  v.建立，创办  v.发现，找到(find的过去式)
 
@@ -754,9 +758,9 @@ v.共计
 
      democratically  [ˌdemə'krætɪklɪ] adv.民主地
 
-     democratic election 民主选举
+     democratic election          民主选举
 
-     democracy n.民主(制度)，民主国家
+     democracy           n.民主(制度)，民主国家
 
 38. election  [ɪˈlekʃn] n.选举，当选
 
@@ -776,19 +780,19 @@ v.共计
 
 45. inference [ˈɪnfərəns] n.推理，推断，推论
 
-     infer v.推断，推理，暗示
+     infer              v.推断，推理，暗示
 
 46. mirror [ˈmɪrə(r)] n.镜子，反光镜，真实写照，反映 v.反映，反射
 
-47. in office 执政，在任
+47. in office              执政，在任
 
-     in power 掌权
+      in power            掌权
 
-     out of office 离职
+      out of office        离职
 
-48. accountable [əˈkaʊntəbl] ajd.有责任的
+48. accountable [əˈkaʊntəbl]     ajd.有责任的
 
-     account n.账号，账单  v.认为是，解释
+     account            n.账号，账单  v.认为是，解释
 
 49. impress  [ɪmˈpres] v.使敬佩，给..留下深刻印象
 
