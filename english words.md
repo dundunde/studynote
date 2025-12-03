@@ -14,7 +14,6 @@
 
     adj.安心的; 稳定的，安全的; 坚固的; 锁牢的
 
-
 security [sɪˈkjʊərəti]
 n.保护措施; 保卫部门; 担保; 安全; 防卫; 抵押品; 证券
 
@@ -85,6 +84,8 @@ v.共计
 
 6. complete [kəmˈpliːt] *adj.*完全的，完整的; 完成的
 
+    completely  [kəmˈpliːtli] adv.完全地，彻底地
+
 7. complex [ˈkɒmpleks] *adj.* 复杂的; 复合的
 
 8. complicated [ˈkɒmplɪkeɪtɪd] *adj.*复杂的; 难处理的
@@ -103,22 +104,22 @@ v.共计
 
 12. shake [ʃeɪk] *v.*摇动，抖动;  颤抖; 握手
 
-       ​		*n.*摇动; 抖动; 颤抖
+        ​		*n.*摇动; 抖动; 颤抖
 
-       - 过去式: shook [ʃʊk]
-       - 过去分词: shaken [ˈʃeɪkən]
+        - 过去式: shook [ʃʊk]
+        - 过去分词: shaken [ˈʃeɪkən]
 
 13. steal [stiːl] *v.*窃取; 偷偷移动;
 
-       - 过去式: stole;
-       - 过去分词: stolen;
+        - 过去式: stole;
+        - 过去分词: stolen;
 
 14. disgust [dɪsˈɡʌst] *n.*厌恶，反感
 
-       ​				*v.*使厌恶，使反感
+        ​				*v.*使厌恶，使反感
 
-       - 过去式: disgusted;
-       - 过去分词: disgusted;
+        - 过去式: disgusted;
+        - 过去分词: disgusted;
 
 15. luxury [ˈlʌkʃəri] *n.*奢侈，豪华; 奢侈品，美食，美衣; 乐趣
 
@@ -126,15 +127,15 @@ v.共计
 
 17. query [ˈkwɪəri] 
 
-      n.问题; 疑问
+       n.问题; 疑问
 
-      v.询问；质疑
+       v.询问；质疑
 
 18. dynamic  [daɪˈnæmɪk] 
 
-      adj.精力充沛的; 活跃的; 动态的
+       adj.精力充沛的; 活跃的; 动态的
 
-      n.动力；力学
+       n.动力；力学
 
 ## 初级磨耳朵
 
@@ -460,25 +461,33 @@ v.共计
 
 21. refer  v.提及，涉及，推荐，指引
 
-      reference n.提及，查询，引号，参考书目，推荐信  adj.供参考的  v.引用  
+        reference n.提及，查询，引号，参考书目，推荐信  adj.供参考的  v.引用  
 
 22. typical  [ˈtɪpɪkl] adj.典型的，特有的，一贯的，平常的
 
-      typically [ˈtɪpɪkli] adv.典型地，代表性地，通常
+        typically [ˈtɪpɪkli] adv.典型地，代表性地，通常
 
-23.  fortune       [ˈfɔːtʃuːn]   n.大笔的钱，命运，运气
+23. fortune       [ˈfɔːtʃuːn]   n.大笔的钱，命运，运气
 
 24. take for granted      认为...理所当然，想当然 
 
 25. grant [ɡrɑːnt]      n.拨款  v.授予，承认
 
-      
+26. serve [sɜːv] v.服务，效力，任职，接待
 
-      
+27. oversee  [ˌəʊvəˈsiː] v. 监督，监视，俯瞰，宽恕
 
-      
+28. bath  [bɑːθ] [bæθ] n.浴缸，洗澡，澡堂  v. (给小孩)洗澡
 
-      
+29. bias [ˈbaɪəs]  n.偏见，偏好  v.使偏向
+
+     biased  [ˈbaɪəst] adj.有偏见的，   v.使存偏见
+
+     unbiased [ʌnˈbaɪəst] adj.没有偏见的，公正的
+
+30. hire  [ˈhaɪə(r)] v.雇佣，临时雇佣，租用   n.租赁，新雇员
+
+31. pronounce [prəˈnaʊns] v.发...的音，宣称，宣布
 
         
 
@@ -487,6 +496,14 @@ v.共计
         
 
         
+
+      ​    
+
+      ​    
+
+      ​    
+
+      ​    
 
 
 
