@@ -104,8 +104,8 @@ v.共计
 
 12. shake [ʃeɪk] *v.*摇动，抖动;  颤抖; 握手
 
-        ​		*n.*摇动; 抖动; 颤抖
-
+        		*n.*摇动; 抖动; 颤抖
+    
         - 过去式: shook [ʃʊk]
         - 过去分词: shaken [ˈʃeɪkən]
 
@@ -116,8 +116,8 @@ v.共计
 
 14. disgust [dɪsˈɡʌst] *n.*厌恶，反感
 
-        ​				*v.*使厌恶，使反感
-
+        				*v.*使厌恶，使反感
+    
         - 过去式: disgusted;
         - 过去分词: disgusted;
 
@@ -461,11 +461,11 @@ v.共计
 
 21. refer  v.提及，涉及，推荐，指引
 
-        reference n.提及，查询，引号，参考书目，推荐信  adj.供参考的  v.引用  
+         reference n.提及，查询，引号，参考书目，推荐信  adj.供参考的  v.引用  
 
 22. typical  [ˈtɪpɪkl] adj.典型的，特有的，一贯的，平常的
 
-        typically [ˈtɪpɪkli] adv.典型地，代表性地，通常
+         typically [ˈtɪpɪkli] adv.典型地，代表性地，通常
 
 23. fortune       [ˈfɔːtʃuːn]   n.大笔的钱，命运，运气
 
@@ -481,29 +481,53 @@ v.共计
 
 29. bias [ˈbaɪəs]  n.偏见，偏好  v.使偏向
 
-     biased  [ˈbaɪəst] adj.有偏见的，   v.使存偏见
+      biased  [ˈbaɪəst] adj.有偏见的，   v.使存偏见
 
-     unbiased [ʌnˈbaɪəst] adj.没有偏见的，公正的
+      unbiased [ʌnˈbaɪəst] adj.没有偏见的，公正的
 
 30. hire  [ˈhaɪə(r)] v.雇佣，临时雇佣，租用   n.租赁，新雇员
 
 31. pronounce [prəˈnaʊns] v.发...的音，宣称，宣布
 
-        
+32. all thing... 什么什么有关的一切
 
-        
+     > i'm such a big fan of all things hunger games
+     >
+     > 我是饥饿游戏的铁杆粉丝，它相干的一切我都超喜欢
 
-        
+33. soundtrack [ˈsaʊntræk] n.声带，电影配音
 
-        
+34. inspire   [ɪnˈspaɪə(r)]  v.激励，启发，吸入(空气)
 
-      ​    
+     inspired ajd.有创造力的  v.鼓舞(inspire  的过去式和过去分词)，启发
 
-      ​    
+     inspired by 受...启发
 
-      ​    
+35. character  [ˈkærəktə(r)] n.性格，特点，人物，角色
 
-      ​    
+     
+
+     
+
+     
+
+     
+
+     ​    
+
+     ​    
+
+     ​    
+
+     ​    
+
+       ​    
+
+       ​    
+
+       ​    
+
+       ​    
 
 
 
