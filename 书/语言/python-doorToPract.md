@@ -34,6 +34,19 @@ print(nos_url.removeprefix('http://'))
 
 - 注意：.removeprefix()和删除空白操作一样，都保持原有字符串不变
 
+#### 使用print输出多行
+
+当字符串很长时，需要分多行书写，可以在合适位置分行，在行尾加上引号，在之后的行的行首缩进并加上引号,这样，python会自动合并括号内的所有字符串
+
+```python
+print("hello "
+     "world")
+输出:
+   hello world 
+```
+
+
+
 ### 数
 
 #### 整数
@@ -283,7 +296,7 @@ if 2 in cars:
     print(2)
 ```
 
-#### 确定列表非空
+#### 确定列表非空(条件表达式)
 
 ```python
 cars = []
@@ -295,7 +308,7 @@ else :
 
 **当if将变量名作为条件表达式时，列表中如果有元素返回True,没有元素返回Flase**
 
-> **对于数字0，空值None，空字符串('',""),空列表，空元组，空字典，if都会返回False**
+> **对于数字0，空值None，空字符串('',""),空列表，空元组，空字典以及None，if都会返回False**
 
 ### 元组
 
@@ -327,11 +340,187 @@ dimen_1 = (2,3)
 
 这样做并没有修改元组中的元素，而是把变量dimen_1指向了一个新的元组，并未修改旧元组
 
+### 字典
+
+1. **字典中的元素按照其添加顺序排序**
+
+2. 定义多行字典
+
+    当字典有多行时，先左括号然后换行，然后缩进4个空格再写键值对以此类推
+
+    **注意：最后一个键值对后面可以跟逗号**
+
+    ```python
+    user_0 = {
+        'username': 'efermi',
+        'first': 'enrico',
+        'last': 'fermi',
+    }
+    ```
+
+3. 删除字典元素(**del语句**)
+
+    ```python
+    alien_0 = {'color': 'green', 'points': 5}
+    del alien_0['color']
+    ```
+
+4. 获取元素
+
+    - 使用中括号
+
+        ```python
+        alien_0 = {'color': 'green', 'points': 5}
+        point = =alien_0['points']
+        ```
+
+    - **使用get方法(推荐)**
+
+        当尝试用get元素时，可以指定第二个参数，当键不存在时会返回该值，get方法可以避免键不存在时引发的错误
+
+        > **注意：如果使用get获取不存在的元素，且没有指定第二个参数，那么get返回None**
+
+        ```python
+        alien_0 = {'color': 'green', 'points': 5}
+        name = alien_0.get('name','no name')
+        ```
+
+5. 遍历字典
+
+    - 遍历**所有键值对**
+
+        **items()方法返回字典中所有键值对的列表**
+
+        ```python
+        user_0 = {
+            'username': 'efermi',
+            'first': 'enrico',
+            'last': 'fermi',
+        }
+        
+        for k,v in user_0.items():
+            print(...)
+        ```
+
+    - 遍历**所有键**
+
+        **当遍历字典时本身时会默认遍历所有的键(如下方代码中第二个for循环)**
+
+        ```python
+        favorite_languages = {
+            'jen': 'python',
+            'sarah': 'c',
+            'edward': 'rust',
+            'phil': 'python',
+        }
+        
+        for k in favorite_languages.keys():
+            print(k)
+        for k in favorite_languages:
+            print(k)
+        ```
+
+    - 遍历字典中所有的值
+
+        ```python
+        favorite_languages = {
+            'jen': 'python',
+            'sarah': 'c',
+            'edward': 'rust',
+            'phil': 'python',
+        }
+        
+        for language in favorite_languages.values():
+            print(language)
+        ```
+
+        如果你想过滤掉值中的重复项，可以使用集合set
+
+        ```python
+        for language in set(favorite_languages.values()):
+            print(language)
+        ```
+
+### input
+
+1. 使用input()获取用户输入
+
+    ```python
+    message = input("please input your age: ")
+    print(message)
+    ```
+
+    > **注意：获取的输入都是str类型，如果输入的是数，可以通过int()来转换**
 
 
 
+### 函数
 
+#### 函数定义与函数参数
 
+1. 函数定义
+
+    ```python
+    def greet_user():
+        """简单问候语"""
+        print('hello!')
+    ```
+
+    紧跟着函数定义的是**文档字符串**，描述了函数是做什么的，python在为程序的函数生成文档时，会查找紧跟在函数定义后的字符串，它用三个双引号引起
+
+2. 函数的位置实参和关键字实参
+
+    ```python
+    def describe_pet(animal_type, pet_name):
+     """显示宠物的信息"""
+     print(f"\nI have a {animal_type}.")
+     print(f"My {animal_type}'s name is {pet_name.title()}.")
+    
+    describe_pet('hamster', 'harry')
+    describe_pet(animal_type='hamster', pet_name='harry')
+    describe_pet(pet_name='harry', animal_type='hamster')
+    ```
+
+    以上是位置实参和关键字实参的用法，**位置实参必须严格按照形参的位置摆放，而关键字实参可以通过指定形参名来忽略摆放顺序**
+
+3. 默认值
+
+    ```python
+    def describe_pet(pet_name, animal_type='dog'):
+     """显示宠物的信息"""
+     print(f"\nI have a {animal_type}.")
+     print(f"My {animal_type}'s name is {pet_name.title()}.")
+    ```
+
+    > **注意：当使用默认值时，必须在形参列表中先列出没有默认值的**
+    > **形参，再列出有默认值的形参。**
+
+#### 函数参数默认传的是引用
+
+```python
+def print_models(unprinted_designs, completed_models):
+ """
+ 模拟打印每个设计，直到没有未打印的设计为止
+ 打印每个设计后，都将其移到列表 completed_models 中
+ """
+ while unprinted_designs:
+ current_design = unprinted_designs.pop()
+ print(f"Printing model: {current_design}")
+ completed_models.append(current_design)
+
+ unprinted_designs = ['phone case', 'robot pendant',
+'dodecahedron']
+ completed_models = []
+ print_models(unprinted_designs, completed_models)
+```
+
+在上面的实例中，将*unprinted_designs*直接传给了函数，**这传递的是变量的引用，函数中对变量的修改会作用到变量本身**
+
+**如果不想传递自身，可以给函数传递一个变量的副本，这样函数中的修改就不是作用到变量本身**
+
+```python
+print_models(unprinted_designs[:], completed_models)
+```
 
 
 
