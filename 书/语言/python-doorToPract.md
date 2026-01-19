@@ -565,7 +565,7 @@ make_pizza('mushrooms', 'green peppers', 'extra cheese')
 
 > **注意：在使用任意数量实参时，代码任意数量实参的形参应发在位置实参和关键字实参的后面**
 
-#### 任意数量关键字实参
+##### 任意数量关键字实参
 
 ```python
 def build_profile(first, last, **user_info):
