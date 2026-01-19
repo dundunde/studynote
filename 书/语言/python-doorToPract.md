@@ -483,7 +483,30 @@ dimen_1 = (2,3)
 
     以上是位置实参和关键字实参的用法，**位置实参必须严格按照形参的位置摆放，而关键字实参可以通过指定形参名来忽略摆放顺序**
 
-3. 默认值
+    
+
+3. 等效的函数调用
+
+    我们在调用函数时**既可以使用位置实参，也可以使用关键字实参**
+
+    ```python
+    def describe_pet(pet_name, animal_type='dog'):
+        pass
+    
+    # 一条名为 Willie 的小狗
+    describe_pet('willie')
+    describe_pet(pet_name='willie')
+    # 一只名为 Harry 的仓鼠
+    describe_pet('harry', 'hamster')
+    describe_pet(pet_name='harry', animal_type='hamster')
+    describe_pet(animal_type='hamster', pet_name='harry')
+    ```
+
+    > **注意：当全部使用关键字参数时可以忽略参数顺序，但是混合使用位置参数和关键字参数时需要注意位置关系，位置参数应该放在关键字参数之前**
+
+    
+
+4. 默认值
 
     ```python
     def describe_pet(pet_name, animal_type='dog'):
@@ -522,23 +545,163 @@ def print_models(unprinted_designs, completed_models):
 print_models(unprinted_designs[:], completed_models)
 ```
 
+#### 任意数量实参（*args,**kwargs）
+
+##### 任意数量位置实参(*args)
+
+```python
+def make_pizza(*toppings):
+ """打印顾客点的所有配料"""
+ print(toppings)
+make_pizza('pepperoni')
+make_pizza('mushrooms', 'green peppers', 'extra cheese')
+
+输出:
+('pepperoni',)
+('mushrooms', 'green peppers', 'extra cheese')
+```
+
+形参*toppings中的星号让Python创建一个名为toppings的**元组**,该元组接收传给toppings的所有值
+
+> **注意：在使用任意数量实参时，代码任意数量实参的形参应发在位置实参和关键字实参的后面**
+
+#### 任意数量关键字实参
+
+```python
+def build_profile(first, last, **user_info):
+    """创建一个字典，其中包含我们知道的有关用户的一切"""
+    user_info['first_name'] = first
+    user_info['last_name'] = last
+    return user_info
+
+user_profile = build_profile('albert', 'einstein',
+                            location='princeton',
+                            field='physics')
+print(user_profile)
+
+#输出：
+{'location': 'princeton', 'field': 'physics', 'first_name': 'albert', 'last_name': 'einstein'}
+```
+
+形参**user_info的两个星号会让Python创建一个名为user_info的**字典**，该字典包含它所收到的所有键值对，可以像访问普通字典一样使用它，它本来就是一个字典
+
+#### 参数定义顺序
+
+参数定义顺序的黄金法则:
+
+1. 位置参数
+2. 默认参数
+3. 可变位置参数*args
+4. 关键字参数
+5. 可变关键字参数**kwargs
 
 
 
+**即：常规参数 $\rightarrow$ `*args` $\rightarrow$ 命名关键字 $\rightarrow$ `**kwargs`**
+
+```python
+def mixed_function(
+    	pos1, pos2, default_p="A",
+    	*args, key_only, **kwargs):
+    pass
+```
 
 
 
+#### 函数编写指南
 
+1. 函数名应见名知义，且**只使用小写字母和下划线**
 
+2. **给模块命名也遵循上述约定**
 
+3. 每个函数都应包含简要阐释其功能的注释，该注释应紧跟在函数定义后面，并采用文档字符串格式(三个双引号)
 
+4. 在给形参默认值时，等号路边不要有空格，函数调用也一样，
 
+    同时，在逗号后面要加一个空格
 
+    ```python
+    def function_name(parameter_0, parameter_1='default value')
+    
+    function_name(value_0, parameter_1='value')
+    ```
 
+5. 如果参数过多，可在函数定义处输入左括号然后回车，然后按两下制表符来缩进两次(两个缩进是为了和一个缩进的函数体区分开来)，右括号放在最后一行的参数后面
 
+    ```python
+    def function_name(
+    		parameter_0, parameter_1, parameter_2,
+    		parameter_3, parameter_4, parameter_5):
+    ```
 
+    
 
+6. 所有import语句应该放在文件开头。唯一的例外是，你要在文件开头使用注释来描述整个程序。
 
+### 模块
+
+**首先：一个.py文件就是一个模块**
+
+#### 导入模块
+
+假设有一个 pizza.py 文件，里面有一个 make_pizza(size, *toppings) 函数，现在把它导入到正在编写的程序
+
+需要在 pizza.py 同级目录创建一个文件，然后代码如下：
+
+```python
+import pizza
+
+# 调用pizza模块中的make_pizza函数
+pizza.make_pizza(...)
+```
+
+当运行该文件时，import 语句会让Python打开 pizza.py 文件并把所有函数复制到当前程序
+
+#### 导入函数
+
+可以只导入模块中的特定函数，继续以1.8.1代码为例
+
+```python
+from pizza import make_pizza
+
+make_pizza(...)
+```
+
+如果使用这种方式，那么调用导入的函数时无需使用点号(.)
+
+#### 使用as指定别名
+
+如果导入的东西名称太长或者与现有程序有名称冲突，可以指定别名
+
+1.  make_pizza() 函数指定别名 mp()
+
+    ```python
+    from pizza import make_pizza as mp
+    
+    mp(...)
+    ```
+
+2. 给 pizza 模块指定别名 p
+
+```python
+import pizza as p
+```
+
+#### 导入模块中的所有函数
+
+使用星号(*)导入模块中的所有函数
+
+```python
+from pizza import *
+
+make_pizza(...)
+```
+
+这里无需使用点号(.)，因为本质上这是直接导入函数（见1.8.2）
+
+> **注意：不推荐使用这种导入方式，因为Python 可能会因为遇到多个名称相同的函数或变量而覆盖函数，而不是分别导入所有的函数。**
+>
+> **最佳做法是要么只导入需要的函数，要么导入模块，用模块名加方法名(如 pizza.make_pizza() (见1.8.1节))来调用**
 
 
 
