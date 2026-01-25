@@ -45,6 +45,16 @@ print("hello "
    hello world 
 ```
 
+#### 判断一个字符串是否在另一个字符串中
+
+```python
+name = 'aaabbb'
+name_sub = 'ab'
+
+if name_sub in name:
+    print(name_sub)
+```
+
 
 
 ### 数
@@ -798,6 +808,197 @@ class ElectricCar(Car):
 当需要同时导入标准库模块和自己写的模块时，应先导入标准库模块，再加一个空行，然后导入自己写的模块。
 
 > 补充：函数（类外定义的）之间用两个空行隔开(在类中函数叫做方法，用一个空行隔开)
+
+
+
+### 异常
+
+#### try-except
+
+使用 try-except 代码块处理异常，当异常发生时，Python 将检查与之匹配的 except 代码块并运行其中的代码
+
+```python
+try:
+     print(5/0)
+except ZeroDivisionError:
+     print("You can't divide by zero!")
+
+```
+
+#### else代码块
+
+只有 try 代码块成功执行才需要继续执行的代码，都应该放在 else 代码块中
+
+```python
+try:
+     answer = int(first_number) / int(second_number)
+except ZeroDivisionError:
+     print("You can't divide by 0!")
+else:
+     print(answer)
+```
+
+
+
+### 测试
+
+#### 安装
+
+```python
+pip install --user pytest
+python -m pip install --user pytest
+
+```
+
+#### 单元测试和测试用例
+
+单元测试就是一个测试函数，测试用例包含多个单元测试
+
+#### 测试函数
+
+当使用 `pytest` 进行测试时，它会寻找以 **test_** 打头的文件，并运行其中以 **test_** 打头的函数
+
+name_function.py
+
+```python
+def get_formatted_name(first, last):
+	"""生成格式规范的姓名"""
+	full_name = f"{first} {last}"
+	return full_name.title()
+```
+
+test_name_function.py
+
+```python
+from name_function import get_formatted_name
+
+def test_first_last_name():
+	"""能够正确地处理像 Janis Joplin 这样的姓名吗？"""
+	formatted_name = get_formatted_name('janis', 'joplin')
+	assert formatted_name == 'Janis Joplin'
+
+```
+
+> **注意：**测试函数的名称应该比典型的函数名更长且更具描述性，当在测试报告中看到它们时，应该一眼能够看出它测试的是什么行为
+
+如果直接运行 test_name_function.py 不会有任何输出，因为我们没有调用这个测试函数，我们应该使用 **`pytest`** 来运行该文件
+
+```python
+ $ pytest
+ ========================= test session starts
+=========================
+❶ platform darwin -- Python 3.x.x, pytest-7.x.x, pluggy-1.x.x
+❷ rootdir: /.../python_work/chapter_11
+❸ collected 1 item
+❹ test_name_function.py . 
+[100%]
+ ========================== 1 passed in 0.00s
+==========================
+```
+
+下面来尝试解读这些输出。首先，我们看到了一些有关运行测试的系统的信息（见❶）。输出指出了用来运行该测试的 Python、pytest 和其他包的版本。接下来，可以看到该测试是从哪个目录运行的（见❷），这里是python_work/chapter_11。如你所见，pytest 找到了一个测试（见❸），并指出了运行的是哪个测试文件（见❹）。文件名后面的**句点**（在❹行.py的后面有一个点号）表明有一个测试通过了，而 100% 指出运行了所有的测试。在可能有数百乃至数千个测试的大型项目中，句点和完成百分比有助于监控测试的运行进度。
+最后一行指出有一个测试通过了，运行该测试花费的时间不到 0.01
+秒。
+
+#### 断言
+
+断言 用途
+assert a == b 断言两个值相等
+assert a != b 断言两个值不等
+assert a 断言 a 的布尔求值为 True
+assert not a 断言 a 的布尔求值为 False
+assert element in list 断言元素在列表中
+assert element not in list 断言元素不在列表中
+
+#### 夹具
+
+
+
+survey.py
+
+```python
+class AnonymousSurvey:
+     """收集匿名调查问卷的答案"""
+    ❶ def __init__(self, question):
+     	"""存储一个问题，并为存储答案做准备"""
+         self.question = question
+         self.responses = []
+    ❷ def show_question(self):
+         """显示调查问卷"""
+         print(self.question)
+    ❸ def store_response(self, new_response):
+         """存储单份调查答卷"""
+         self.responses.append(new_response)
+    ❹ def show_results(self):
+         """显示收集到的所有答卷"""
+         print("Survey results:")
+         for response in self.responses:
+         	print(f"- {response}")
+
+```
+
+在 pytest 中，要创建夹具，可编写一个使用装饰器 **@pytest.fixture** 装饰的函数
+
+```python
+import pytest
+
+from survey import AnonymousSurvey
+
+❶ @pytest.fixture
+❷ def language_survey():
+    """一个可供所有测试函数使用的 AnonymousSurvey 实例"""
+    question = "What language did you first learn to speak?"
+    language_survey = AnonymousSurvey(question)
+    return language_survey
+
+❸ def test_store_single_response(language_survey):
+    """测试单个答案会被妥善地存储"""
+    ❹ language_survey.store_response('English')
+     assert 'English' in language_survey.responses
+    
+❺ def test_store_three_responses(language_survey):
+    """测试三个答案会被妥善地存储"""
+    responses = ['English', 'Spanish', 'Mandarin']
+    for response in responses:
+        ❻ language_survey.store_response(response)
+    for response in responses:
+        assert response in language_survey.responses
+
+```
+
+我们将装饰器 @pytest.fixture（见❶）应用于新函数language_survey()（见❷）。这个函数创建并返回一个AnonymousSurvey 对象。
+
+两个测试函数的定义（见❸和❺）：都有一个名为language_survey 的形参。当测试函数的一个形参与应用了装饰器@pytest.fixture 的函数（夹具）同名时，将自动运行夹具，并将夹具返回的值传递给测试函数。在这个示例中，language_survey() 函数向test_store_single_response() 和test_store_three_responses() 提供了一个language_survey 实例。这样就避免了每次都要手动创建实例
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
