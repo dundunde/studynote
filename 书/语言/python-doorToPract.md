@@ -974,13 +974,69 @@ from survey import AnonymousSurvey
 
 
 
+### 操作文件
+
+#### 文本文件
+
+##### 读取文件
+
+使用库 `pathlib` , read_text()方法可以读取文件的所有内容
+
+```python
+import pathlib
+
+t = pathlib.Path('E:/data/ppg.csv')
+contents = t.read_text()
+print(contents)
+```
+
+##### 访问文件中的各行
+
+使用splitlines()函数将字符串转换为一系列的行
+
+```python
+# 接上面的代码
+lines = contents.splitlines()
+for line in lines:
+    print(line)
+```
+
+##### 写入文件
+
+```python
+# 接上面的代码
+t.write_text('i love programming.')
+```
+
+> 注意：
+>
+> 如果 path 变量路径的文件不存在，那么write_text()会创建它，并且写入文件后，write_text()会确保文件得以妥善关闭
+>
+> 如果文件已存在，write_text() 函数会删除原有内容
 
 
 
+#### CSV文件
 
+读取csv文件，创建一个 reader 对象，将 csv文件的所有行传进去， next() 会返回 my_csv_reader 的下一行(从第一行开始)， 在代码中 next() 只调用一次，所以得到了 csv 的第一行， 它是一个列表
 
+> **使用 enumerate 可以获取列表的每个元素的索引和值**
 
+```python
+import pathlib
+import csv
 
+t = pathlib.Path('E:/data/ppg.csv')
+lines = t.read_text().splitlines()
+
+my_csv_reader = csv.reader(lines)
+header = next(my_csv_reader)
+print(header)
+
+for index,col in enumerate(header):
+    print(index, col)
+
+```
 
 
 
