@@ -3,7 +3,21 @@ Description:
 Version: 2.0
 Autor: dundun
 '''
-data = [ 'ACME', 50, 91.1, (2012, 12, 21) ]
 
-a,b,c,(d,e,f) = data
-print(d)
+from collections import deque
+from collections import defaultdict
+from collections import namedtuple
+
+
+d = {
+    'name': 'lihua',
+}
+
+a = 1
+c = 2
+
+info = (
+    f"a{a}"
+    f"c{c}"
+)
+print(info)
