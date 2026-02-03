@@ -8,16 +8,15 @@ from collections import deque
 from collections import defaultdict
 from collections import namedtuple
 
+a = '1'
+b = '2'
 
-d = {
-    'name': 'lihua',
-}
+print(f"aaa{a}"
+      f"bbb{b}"
+      )
 
-a = 1
-c = 2
 
-info = (
-    f"a{a}"
-    f"c{c}"
-)
-print(info)
+print('''aaa
+
+    aaaa
+''')
