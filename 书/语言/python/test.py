@@ -11,12 +11,6 @@ from collections import namedtuple
 a = '1'
 b = '2'
 
-print(f"aaa{a}"
-      f"bbb{b}"
-      )
+c = ['']
 
-
-print('''aaa
-
-    aaaa
-''')
+c[0]

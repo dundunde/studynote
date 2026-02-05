@@ -250,9 +250,16 @@ with open('data.bin', 'r') as f:
 
 ## 用支持插值的f-string取代C风格的格式字符串与str.format方法
 
+## 在字典中，get一个dict没有的键值对会返回None
 
+## 
 
+```python
+c = ['']
+c[0]
+```
 
+以上操作合法，虽然空字符串在条件表达式中(`if ''`)是False，但是它也算一个对象(就像是std::string name;虽然它是空的，但它是一个对象)，所以它算一个元素
 
 
 
