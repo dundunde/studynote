@@ -263,23 +263,70 @@ c[0]
 
 
 
+## 尽量使用unpaking拆分拆解数据结构中的数据
+
+```python
+item = ('ab', 'cd')
+
+first, second = item
+```
+
+若我们确定某个元组里面只有两个元素，那么就可以直接把这两个元素分别赋给相应的变量，而不用再通过下标去访问。`通过unpacking来赋值要比通过下标去访问元组内的元素更清晰，而且这种写法所需的代码量通常比较少。`
 
 
 
+```python
+names = ['a', 'b', 'c', 'd']
+
+for _ in  range(len(names)):
+    for i in range(1, len(names)):
+        if names[i] < names[i-1]:
+            tmep = names[i]
+            names[i] = names[i-1]
+            names[i-1] = names[i]
+```
+
+以上是传统的两个变量互换操作，但有了`unpaking` 后，只需要这么写：
+
+```python
+for _ in  range(len(names)):
+    for i in range(1, len(names)):
+        if names[i] < names[i-1]:
+            names[i-1], names[i] = names[i], names[i-1]
+```
+
+这么写之所以成立，是因为python在处理赋值操作时，会先对=号右侧求值，于是，它会新建一个临时元组，把`names[i], names[i-1]`放进去，然后python对该临时元组进行unpaking，于是就完成了元素互换。做完unpacking后，系统会扔掉这个临时的元组。
 
 
 
+unpacking机制还有一个特别重要的用法，就是可以在for循环或者类似的结构（例如推导与生成表达式，这些内容参见第27条）里面，把复杂的数据拆分到相关的变量之中。
+
+```python
+for idx,(first, second) in enumerate(names):
+    print(idx, first, second)
+```
+
+这才是符合Python风格的写法（Pythonic式的写法），我们不需要再通过拿到每个tuple,再使用下标访问了。这种写法可以节省篇幅，而且比较容易理解。
 
 
 
+## 尽量使用enumrate 取代 range
 
+```python
+for idx,(first, second) in enumerate(names):
+    print(idx, first, second)
+```
 
+enumerate能够把任何一种迭代器（iterator）封装成惰性生成器（lazygenerator，参见第30条）。这个惰性生成器每次生成一个tuple。
 
+另外，还可以调整`enumrate` 的第二个参数指定起始**序号**，比如从序号1开始**计数**
 
+```python
+for idx,(first, second) in enumerate(names, 1):
+    print(idx, first, second)
+```
 
-
-
-
+> 注意：这里说的是起始序号，而不是起始索引，它**依然从索引0开始迭代，只是idx会从1开始计数。**
 
 
 
