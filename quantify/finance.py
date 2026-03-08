@@ -4,29 +4,34 @@
 3. ta-lib是什么
 """
 
-# import numpy as np
-# # 在所有的 import 之前，强行打个补丁
-# if not hasattr(np, 'bool8'):
-#     np.bool8 = np.bool_
+import numpy as np
+
+# 在所有依赖于 Bokeh 或 Backtrader 的 import 之前，强行打个补丁
+if not hasattr(np, 'bool8'):
+    np.bool8 = np.bool_
+if not hasattr(np, 'object'):
+    np.object = object
+if not hasattr(np, 'float'):
+    np.float = float
+if not hasattr(np, 'int'):
+    np.int = int
+
 import os
 import sys
+import ccxt
 import datetime
 import pandas as pd
 import quantstats as qs
 import backtrader as bt
 
-# from backtrader_plotting import Bokeh
-# from backtrader_plotting.schemes import Tradimo
-
-
+from backtrader_plotting import Bokeh
+from backtrader_plotting.schemes import Tradimo
 
 class TestStrategy(bt.Strategy):
 
     params = (
-            ('myparam', 27),
-            ('exitbars', 5),
-            ('maperiod', 5),
-
+            ('period', 20),
+            ('devfactor', 2.0),
             )
 
     def __init__(self):
@@ -36,11 +41,21 @@ class TestStrategy(bt.Strategy):
         self.buyprice = None
         self.buycomm = None
 
-        # 均线
-        self.sma = bt.indicators.MovingAverageSimple(
+        self.count = 0
+        
+        # 布林带
+        self.bbands = bt.indicators.BollingerBands(
             self.datas[0],
-            period=self.params.maperiod
-            )
+            period=self.params.period,
+            devfactor=self.params.devfactor,
+        )
+
+        self.cross_buy = bt.indicators.CrossOver(
+            self.dataclose, self.bbands.lines.mid
+        )
+        self.cross_sell = bt.indicators.CrossOver(
+            self.dataclose, self.bbands.lines.top
+        )
 
         # bt.indicators.ExponentialMovingAverage(self.datas[0], period=25)
         # bt.indicators.WeightedMovingAverage(self.datas[0], period=25).subplot = True
@@ -75,7 +90,7 @@ class TestStrategy(bt.Strategy):
                           order.executed.comm))
                 
         elif order.status in [order.Canceled, order.Margin, order.Rejected]:
-            self.log('订单取消/保证金不足/拒绝')
+            self.log('订单被取消/保证金不足/被拒绝')
 
         self.order = None
     
@@ -93,52 +108,66 @@ class TestStrategy(bt.Strategy):
         if self.order:
             return
         
+        current_close = self.dataclose[0]
+        upper_band = self.bbands.lines.top[0]
+        middle_band = self.bbands.lines.mid[0]
+        lower_band = self.bbands.lines.bot[0]
+        
         if not self.position:
-            # if self.dataclose[0] < self.dataclose[-1]:
-            #     if self.dataclose[-1] < self.dataclose[-2]:
-            #         self.log('创建买入订单，%.2f' % self.dataclose[0])
-            #         self.order = self.buy()
-
-            if self.dataclose[0] > self.sma[0]:
-                self.log('创建买入订单，%.2f' % self.dataclose[0])
+            if self.cross_buy > 0:
                 self.order = self.buy()
+        # 如果有仓位，则判断是否卖出
         else:
-            if self.dataclose[0] < self.sma[0]:
-                self.log('创建卖出订单，%.2f' % self.dataclose[0])
+            if self.cross_sell <0:
                 self.order = self.sell()
-    
-    def stop(self):
-        self.log(f'maperiod:{self.params.maperiod} ending value:{self.broker.getvalue():.2f}',doprint=True)
+                self.count = 0
+            elif current_close < lower_band:
+                self.order = self.sell()
 
+            
+    def stop(self):
+        # self.log(f'maperiod:{self.params.maperiod} ending value:{self.broker.getvalue():.2f}',doprint=True)
+        pass
 
 
 if __name__ == '__main__':
     # 创建对象并添加策略
     cerebro = bt.Cerebro()
     # 可以在添加策略时修改参数的默认值
-    # cerebro.addstrategy(TestStrategy,myparam=20, exitbars=7)
-    cerebro.optstrategy(
-        TestStrategy,
-        maperiod=range(10,31),
-    )
+    cerebro.addstrategy(TestStrategy)
+    # cerebro.optstrategy(
+    #     TestStrategy,
+    #     maperiod=range(10,31),
+    # )
 
     # 加载数据
-    modpath = os.path.dirname(os.path.abspath(sys.argv[0]))
-    datapath = os.path.join(modpath, './data/orcl-1995-2014.txt')
-
-    data = bt.feeds.YahooFinanceCSVData(
-        dataname='c:/Users/dun/Desktop/studynote/studynote/quantify/data/orcl-1995-2014.txt',
-        fromdate = datetime.datetime(2000, 1, 1),
-        todate = datetime.datetime(2000, 12, 31),
-        reverse=False,
-        dtformat='%Y-%m-%d',
+    data = pd.read_csv(
+        "./BTCUSDT_2h_2020_2026_Clean.csv",
+        index_col='datetime',
+        parse_dates=['datetime']
+        )
+    # data = data[:-2000]
+    # modpath = os.path.dirname(os.path.abspath(sys.argv[0]))
+    # datapath = os.path.join(modpath, './data/orcl-1995-2014.txt')
+    # data = data.iloc[-1000:]
+    data = bt.feeds.PandasData(
+        dataname=data,
+        datetime=None,  # None 表示直接使用 DataFrame 的索引 (即我们刚刚转换好的 DatetimeIndex)
+        name='BTCUSDT',
+        open='open',
+        high='high',
+        low='low',
+        close='close',
+        volume='volume',
+        openinterest=-1 # 如果你的数据里没有持仓量列，设为 -1 表示忽略
     )
+
     cerebro.adddata(data=data)
 
     # 设置金额和佣金
-    cerebro.broker.setcash(1000.0)
-    cerebro.addsizer(bt.sizers.FixedSize, stake=10)
-    cerebro.broker.setcommission(commission=0.0)
+    cerebro.broker.setcash(100000.0)
+    cerebro.addsizer(bt.sizers.FixedSize, stake=0.01)  # 每次买入 0.01 个 BTC
+    cerebro.broker.setcommission(commission=0.001)
 
     # 4. 添加 TimeReturn 分析器，用来记录每日收益率
     cerebro.addanalyzer(bt.analyzers.TimeReturn, _name='_TimeReturn')
@@ -148,27 +177,29 @@ if __name__ == '__main__':
     # 5. 运行回测并接收返回结果
     results = cerebro.run(maxcpus=1)
     strat = results[0] # 获取第一个策略实例
+    print('最终投资组合价值：%.2f' % cerebro.broker.getvalue())
 
-    # cerebro.plot()
-    # b = Bokeh(style='bar', plot_mode='single', scheme=Tradimo())
+    cerebro.plot(style='candlestick')
+
+    # b = Bokeh(style='bar', plot_mode='single', scheme=Tradimo(), use_cdn=False)
     # cerebro.plot(b)
     
     # print('最终投资组合价值：%.2f' % cerebro.broker.getvalue())
 
-    # # 6. 提取收益率数据
-    # portfolio_stats = strat.analyzers.getbyname('_TimeReturn')
-    # returns = portfolio_stats.get_analysis()
+    # 6. 提取收益率数据
+    portfolio_stats = strat.analyzers.getbyname('_TimeReturn')
+    returns = portfolio_stats.get_analysis()
 
-    # # 7. 将字典转换为 pandas.Series，并将索引转为日期时间格式
-    # # 这一步是必须的，因为 QuantStats 只认 pandas 数据格式
-    # returns_series = pd.Series(returns)
-    # returns_series.index = pd.to_datetime(returns_series.index)
+    # 7. 将字典转换为 pandas.Series，并将索引转为日期时间格式
+    # 这一步是必须的，因为 QuantStats 只认 pandas 数据格式
+    returns_series = pd.Series(returns)
+    returns_series.index = pd.to_datetime(returns_series.index)
     
-    # # 由于时区问题，需要去掉时区信息（如果有的话），防止 QuantStats 报错
-    # returns_series.index = returns_series.index.tz_localize(None)
+    # 由于时区问题，需要去掉时区信息（如果有的话），防止 QuantStats 报错
+    returns_series.index = returns_series.index.tz_localize(None)
 
-    # # 8. 使用 QuantStats 生成网页版分析报告
-    # # 这会在你脚本的同级目录下生成一个 strategy_report.html 文件
-    # print("正在生成 QuantStats 报告...")
-    # qs.reports.html(returns_series, output='strategy_report.html', title='Oracle 策略回测报告')
-    # print("报告生成完毕！请在文件夹中双击打开 strategy_report.html")
+    # 8. 使用 QuantStats 生成网页版分析报告
+    # 这会在你脚本的同级目录下生成一个 strategy_report.html 文件
+    print("正在生成 QuantStats 报告...")
+    qs.reports.html(returns_series, output='strategy_report.html', title='Oracle 策略回测报告')
+    print("报告生成完毕！请在文件夹中双击打开 strategy_report.html")
