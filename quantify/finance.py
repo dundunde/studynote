@@ -65,9 +65,8 @@ class TestStrategy(bt.Strategy):
         
     
     def log(self, txt, dt=None, doprint=False):
-        if doprint:
-            dt = dt or self.datas[0].datetime.date(0)
-            print('%s, %s' % (dt.isoformat(), txt))
+        dt = dt or self.datas[0].datetime.date(0)
+        print('%s, %s' % (dt.isoformat(), txt))
 
     def notify_order(self, order: bt.order.Order):
         if order.status in [order.Submitted, order.Accepted]:
@@ -103,7 +102,7 @@ class TestStrategy(bt.Strategy):
         )
     
     def next(self):
-        self.log(f'收盘价:{self.dataclose[0]:.2f}')
+        # self.log(f'收盘价:{self.dataclose[0]:.2f}')
 
         if self.order:
             return
@@ -126,7 +125,6 @@ class TestStrategy(bt.Strategy):
 
             
     def stop(self):
-        # self.log(f'maperiod:{self.params.maperiod} ending value:{self.broker.getvalue():.2f}',doprint=True)
         pass
 
 
@@ -142,7 +140,7 @@ if __name__ == '__main__':
 
     # 加载数据
     data = pd.read_csv(
-        "./BTCUSDT_2h_2020_2026_Clean.csv",
+        "./BTCUSDT_4h_2020_2026_Clean.csv",
         index_col='datetime',
         parse_dates=['datetime']
         )
@@ -165,7 +163,7 @@ if __name__ == '__main__':
     cerebro.adddata(data=data)
 
     # 设置金额和佣金
-    cerebro.broker.setcash(100000.0)
+    cerebro.broker.setcash(2000.0)
     cerebro.addsizer(bt.sizers.FixedSize, stake=0.01)  # 每次买入 0.01 个 BTC
     cerebro.broker.setcommission(commission=0.001)
 
