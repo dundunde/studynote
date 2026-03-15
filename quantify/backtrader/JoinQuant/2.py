@@ -33,29 +33,31 @@ import math
 
 class CryptoMomentumRotation(bt.Strategy):
     """
-    加密货币多因子动量轮动策略 (复刻原版策略3：七星ETF轮动)
-    核心逻辑：MA20趋势过滤 + RSI超买过滤 + 动量加权打分(年化收益*R²) + 换仓缓冲区
+    加密货币多因子动量轮动策略 (增加做空逻辑)
+    核心逻辑：MA20趋势过滤 + RSI超买/超卖过滤 + 动量加权打分(年化收益*R²) + 换仓缓冲区
     """
     params = dict(
         # 基础参数
-        hold_num=3,               # 目标持仓数量 (原策略为5只，加密市场相关性高，建议3-5只)
-        buffer_top_n=5,           # 换仓缓冲区 (原策略为8，如果老持仓掉到第4、5名暂不卖出减少磨损)
+        hold_num=3,               # 单边目标持仓数量 (做多3只，做空3只)
+        buffer_top_n=5,           # 换仓缓冲区
+        allow_short=True,         # 做空总开关
         
         # 动量计算参数
         lookback_days=25,         # 长期动量周期
-        min_score=1.0,            # 入选最低得分
+        min_score=1.0,            # 入选最低绝对得分 (做多需 > min_score, 做空需 < -min_score)
         
         # 过滤开关与参数
-        enable_ma_filter=True,    # 是否开启均线趋势过滤 (必须站上MA20)
+        enable_ma_filter=True,    # 均线趋势过滤 
         ma_period=20,             
         
-        use_rsi=True,             # RSI超买过滤
+        use_rsi=True,             # RSI极值过滤
         rsi_period=6,
-        rsi_threshold=98,
+        rsi_threshold=98,         # 做多超买过滤
+        rsi_short_threshold=30,   # 做空超卖过滤 (避免在底部追空)
         
-        enable_volume=True,       # 高位放量过滤
+        enable_volume=True,       # 高位放量/低位爆量过滤
         vol_lookback=5,
-        vol_threshold=1.5,        # 放量倍数
+        vol_threshold=1.5,        
         
         short_momentum=True,      # 短期动量过滤
         short_days=10,
@@ -64,7 +66,6 @@ class CryptoMomentumRotation(bt.Strategy):
 
     def __init__(self):
         self.inds = {}
-        # 为每一个传入的数据集(币种)初始化独立指标
         for d in self.datas:
             self.inds[d._name] = {
                 'ma20': bt.indicators.SMA(d.close, period=self.p.ma_period),
@@ -74,132 +75,146 @@ class CryptoMomentumRotation(bt.Strategy):
             }
 
     def prenext(self):
-        # 等待所有数据准备好
         self.next()
 
     def calc_momentum_score(self, d):
-        """计算单币种的动量得分及过滤"""
-        # 1. 获取近期价格数据
+        """计算单币种的动量得分，并返回信号类型 (1: 做多, -1: 做空, 0: 观望)"""
         prices = np.array(d.close.get(size=self.p.lookback_days))
         if len(prices) < self.p.lookback_days:
-            return None
+            return 0, 0
 
         current_price = d.close[0]
         inds = self.inds[d._name]
 
-        # 2. 均线趋势过滤 (跌破MA20直接淘汰)
-        if self.p.enable_ma_filter and current_price < inds['ma20'][0]:
-            return None
-
-        # 3. RSI超买过滤 (RSI极高且跌破MA5，视为高位走弱)
-        if self.p.use_rsi:
-            if inds['rsi'][0] > self.p.rsi_threshold and current_price < inds['ma5'][0]:
-                return None
-
-        # 4. 短期动量过滤 (近期10天不能是下跌趋势)
-        if self.p.short_momentum:
-            short_prices = np.array(d.close.get(size=self.p.short_days + 1))
-            if len(short_prices) == self.p.short_days + 1:
-                short_ret = short_prices[-1] / short_prices[0] - 1
-                # Crypto按365天计算年化
-                short_ann = (1 + short_ret) ** (365 / self.p.short_days) - 1
-                if short_ann < self.p.short_threshold:
-                    return None
-
-        # 5. 急跌风控 (近3日不能有单日暴跌超3%，Crypto波动大，这里放宽或可调整为5-10%)
-        if len(prices) >= 4:
-            d1 = prices[-1] / prices[-2]
-            d2 = prices[-2] / prices[-3]
-            d3 = prices[-3] / prices[-4]
-            if min(d1, d2, d3) < 0.90:  # 币圈建议调为单日跌幅超10%过滤
-                return None
-
-        # 6. 核心动量计算 (加权线性回归)
-        # 给予近期数据更高权重
+        # 计算核心动量 (加权线性回归)
         y = np.log(prices)
         x = np.arange(len(y))
         weights = np.linspace(1, 2, len(y))
         
         slope, intercept = np.polyfit(x, y, 1, w=weights)
-        annualized_returns = math.exp(slope * 365) - 1  # 币圈365天
+        annualized_returns = math.exp(slope * 365) - 1 
         
-        # 计算R² (拟合优度，衡量上涨的平滑性)
         ss_res = np.sum(weights * (y - (slope * x + intercept)) ** 2)
         ss_tot = np.sum(weights * (y - np.mean(y)) ** 2)
         r_squared = 1 - ss_res / ss_tot if ss_tot else 0
-
-        # 动量得分 = 年化收益 * R²
         score = annualized_returns * r_squared
 
-        # 7. 高位放量过滤 (如果年化收益高，且今日爆量，怀疑是诱多出货)
-        if self.p.enable_volume and annualized_returns > 1.0: # 年化>100%视为高位
-            avg_vol = inds['vol_sma'][-1]
-            if avg_vol > 0 and (d.volume[0] / avg_vol) > self.p.vol_threshold:
-                return None
+        # 准备短期数据用于过滤
+        short_ann = 0.0
+        if self.p.short_momentum:
+            short_prices = np.array(d.close.get(size=self.p.short_days + 1))
+            if len(short_prices) == self.p.short_days + 1:
+                short_ret = short_prices[-1] / short_prices[0] - 1
+                # 避免复数运算报错，加入安全处理
+                short_ann = (1 + short_ret) ** (365 / self.p.short_days) - 1 if short_ret > -1 else -1
 
-        return score
+        d1 = d2 = d3 = 1.0
+        if len(prices) >= 4:
+            d1 = prices[-1] / prices[-2]
+            d2 = prices[-2] / prices[-3]
+            d3 = prices[-3] / prices[-4]
+            
+        avg_vol = inds['vol_sma'][-1]
+        is_high_vol = self.p.enable_volume and avg_vol > 0 and (d.volume[0] / avg_vol) > self.p.vol_threshold
+
+        # === 做多条件过滤 ===
+        is_long = True
+        if self.p.enable_ma_filter and current_price < inds['ma20'][0]: is_long = False
+        if self.p.use_rsi and inds['rsi'][0] > self.p.rsi_threshold and current_price < inds['ma5'][0]: is_long = False
+        if self.p.short_momentum and short_ann < self.p.short_threshold: is_long = False
+        if min(d1, d2, d3) < 0.90: is_long = False  # 单日暴跌 > 10%
+        if is_high_vol and annualized_returns > 1.0: is_long = False
+        if score <= self.p.min_score: is_long = False
+
+        if is_long: return score, 1
+
+        # === 做空条件过滤 ===
+        is_short = self.p.allow_short
+        if self.p.enable_ma_filter and current_price > inds['ma20'][0]: is_short = False
+        if self.p.use_rsi and inds['rsi'][0] < self.p.rsi_short_threshold and current_price > inds['ma5'][0]: is_short = False # 避免极度超卖反弹
+        if self.p.short_momentum and short_ann > -self.p.short_threshold: is_short = False
+        if max(d1, d2, d3) > 1.10: is_short = False # 单日暴涨 > 10%
+        if is_high_vol and annualized_returns < -0.5: is_short = False # 暴跌且爆量，可能是恐慌盘见底
+        if score >= -self.p.min_score: is_short = False
+
+        if is_short: return score, -1
+
+        return score, 0
 
     def next(self):
-        # 如果还在准备期，跳过
         if len(self) < self.p.lookback_days:
             return
 
-        # 1. 对所有池子中的币种进行打分排序
-        scores = []
+        long_scores = []
+        short_scores = []
+
+        # 1. 评分与多空分类
         for d in self.datas:
-            score = self.calc_momentum_score(d)
-            if score is not None and score > self.p.min_score:
-                scores.append((score, d))
+            score, direction = self.calc_momentum_score(d)
+            if direction == 1:
+                long_scores.append((score, d))
+            elif direction == -1:
+                short_scores.append((score, d))
         
-        # 按得分降序排序
-        scores.sort(key=lambda x: x[0], reverse=True)
-        ranked_datas = [x[1] for x in scores]
-        valid_names = [d._name for d in ranked_datas]
+        # 做多按得分降序，做空按得分升序（找最负的）
+        long_scores.sort(key=lambda x: x[0], reverse=True)
+        short_scores.sort(key=lambda x: x[0], reverse=False)
 
-        # 2. 确定目标持仓 (引入原策略的“换仓缓冲区 Buffer”逻辑)
-        target_datas = []
-        current_holdings = [d for d in self.datas if self.getposition(d).size > 0]
+        valid_long_names = [x[1]._name for x in long_scores]
+        valid_short_names = [x[1]._name for x in short_scores]
+
+        target_longs = []
+        target_shorts = []
         
-        # 2.1 优先保留在前 N (缓冲区) 名的老持仓，减少来回摩擦
-        top_buffer_names = valid_names[:self.p.buffer_top_n]
-        for d in current_holdings:
-            if d._name in top_buffer_names and len(target_datas) < self.p.hold_num:
-                target_datas.append(d)
+        current_positions = {d: self.getposition(d).size for d in self.datas if self.getposition(d).size != 0}
+        
+        # 2. 缓冲池逻辑 (优先保留旧仓位以降低摩擦)
+        top_long_buffer = valid_long_names[:self.p.buffer_top_n]
+        for d, size in current_positions.items():
+            if size > 0 and d._name in top_long_buffer and len(target_longs) < self.p.hold_num:
+                target_longs.append(d)
                 
-        # 2.2 填充剩余空位 (从得分最高的开始填)
-        for d in ranked_datas:
-            if len(target_datas) >= self.p.hold_num:
-                break
-            if d not in target_datas:
-                target_datas.append(d)
+        top_short_buffer = valid_short_names[:self.p.buffer_top_n]
+        for d, size in current_positions.items():
+            if size < 0 and d._name in top_short_buffer and len(target_shorts) < self.p.hold_num:
+                target_shorts.append(d)
 
-        target_names = [d._name for d in target_datas]
+        # 3. 填补空位
+        for score, d in long_scores:
+            if len(target_longs) >= self.p.hold_num: break
+            if d not in target_longs: target_longs.append(d)
+            
+        for score, d in short_scores:
+            if len(target_shorts) >= self.p.hold_num: break
+            if d not in target_shorts: target_shorts.append(d)
 
-        # 3. 防御逻辑
-        # 如果目标池为空，说明所有币种都跌破MA20或动量为负
-        if not target_datas:
-            self.log("【防御状态】全市场极弱，清仓持有现金 (USDT)")
+        target_names = [d._name for d in target_longs] + [d._name for d in target_shorts]
 
         # 4. 执行调仓
-        # 4.1 卖出不在目标列表中的持仓
-        for d in current_holdings:
+        # 4.1 卖出/平仓 不在目标列表中的持仓
+        for d, size in current_positions.items():
             if d._name not in target_names:
                 self.close(d)
-                self.log(f"平仓卖出: {d._name}")
+                action = "平多" if size > 0 else "平空"
+                self.log(f"{action}: {d._name}")
 
-        # 4.2 买入/调仓 目标列表中的币种
-        if target_datas:
-            # 等权分配资金
-            target_percent = 1.0 / len(target_datas)
-            for d in target_datas:
-                self.order_target_percent(d, target=target_percent)
-                self.log(f"目标持仓: {d._name}, 比例: {target_percent*100:.1f}%")
+        # 4.2 计算资金分配比例 (对冲配置：一半多，一半空)
+        total_slots = self.p.hold_num * 2 if self.p.allow_short else self.p.hold_num
+        target_weight = 1.0 / total_slots if total_slots > 0 else 0
+
+        # 4.3 建仓/调仓
+        for d in target_longs:
+            self.order_target_percent(d, target=target_weight)
+            self.log(f"目标做多: {d._name}, 比例: {target_weight*100:.1f}%")
+            
+        for d in target_shorts:
+            # target 为负数，Backtrader 自动识别为做空逻辑
+            self.order_target_percent(d, target=-target_weight)
+            self.log(f"目标做空: {d._name}, 比例: {-target_weight*100:.1f}%")
 
     def log(self, txt, dt=None):
-        """简易日志输出"""
         dt = dt or self.datas[0].datetime.date(0)
         print(f'[{dt.isoformat()}] {txt}')
-
 
 def run_backtest():
     # 1. 初始化 Cerebro 引擎
