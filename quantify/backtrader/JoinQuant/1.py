@@ -23,6 +23,22 @@ from backtrader_plotting import Bokeh
 from backtrader_plotting.schemes import Tradimo
 from collections import deque
 
+
+class FinalValueAnalyzer(bt.Analyzer):
+    def start(self):
+        # 初始化一个变量
+        self.final_val = 0.0
+
+    def stop(self):
+        # 回测刚结束、策略对象还没被销毁时触发
+        # 此时 self.strategy 健在，赶紧把资金记下来
+        self.final_val = self.strategy.broker.getvalue()
+
+    def get_analysis(self):
+        # 当外部提取分析结果时，直接交出我们存好的数值
+        return {"final_value": self.final_val}
+
+
 class CryptoRsrsMacdStrategy(bt.Strategy):
     """
     加密货币 RSRS + MACD背离 + ATR移动止损 策略 (支持多空双向，多空参数独立)
@@ -227,17 +243,31 @@ class CryptoRsrsMacdStrategy(bt.Strategy):
         dt = dt or self.data.datetime.date(0)
         print(f'{dt.isoformat()}, {txt}')
 
+
+
 if __name__ == '__main__':
     cerebro = bt.Cerebro()
-    cerebro.addstrategy(CryptoRsrsMacdStrategy)
 
+    # 1. 使用 optstrategy 进行参数寻优
+    # 这里我们对 多/空 的 ATR乘数 和 止盈目标 进行组合测试
+    # 注意：传给优化的参数必须是可迭代对象 (比如 tuple, list, 或者 range)
+    cerebro.optstrategy(
+        CryptoRsrsMacdStrategy,
+        long_atr_mult=(2.0, 2.5, 3.0),         # 测试 3 个值
+        long_profit_target=(1.5, 2.0),         # 测试 2 个值
+        short_atr_mult=(1.0, 1.5, 2.0),        # 测试 3 个值
+        short_profit_target=(1.2, 1.5)         # 测试 2 个值
+        # 组合总数 = 3 * 2 * 3 * 2 = 36 种情况
+    )
+
+    # 2. 加载数据
     start_date = '2023-01-01'
     end_date = '2026-01-01'
     data = pd.read_csv(
         "./quantify/data/BTCUSDT_4h_2020_2026_Clean.csv",
         index_col='datetime',
         parse_dates=['datetime']
-        )
+    )
     data = data.loc[start_date:end_date]
     
     data_1 = bt.feeds.PandasData(
@@ -251,30 +281,65 @@ if __name__ == '__main__':
         volume='volume',
         openinterest=-1
     )
-
     cerebro.adddata(data=data_1)
     
+    # 3. 设置初始资金和手续费
     cerebro.broker.setcash(2000.0)
     cerebro.addsizer(bt.sizers.FixedSize, stake=0.01)
     cerebro.broker.setcommission(commission=0.001)
 
-    cerebro.addanalyzer(bt.analyzers.TimeReturn, _name='_TimeReturn')
+    # 添加分析器来评估每个组合的收益和回撤
+    cerebro.addanalyzer(bt.analyzers.Returns, _name='_Returns')
+    cerebro.addanalyzer(bt.analyzers.DrawDown, _name='_DrawDown')
+    
+    # --- 新增：把我们的自定义分析器加进去 ---
+    cerebro.addanalyzer(FinalValueAnalyzer, _name='_FinalValue')
+    print('开始并行参数优化，请耐心等待...')
+    
+    # 4. 运行回测 (maxcpus=None 表示使用全部 CPU 核心)
+    # 优化模式下，这里返回的是一个由列表组成的列表
+    results = cerebro.run(maxcpus=None) 
 
-    print('初始投资组合价值：%.2f' % cerebro.broker.getvalue())
-    results = cerebro.run(maxcpus=1)
-    strat = results[0]
-    print('最终投资组合价值：%.2f' % cerebro.broker.getvalue())
+    # 5. 解析并收集所有参数组合的回测结果
+    final_results_list = []
+    
+    for run in results:
+        for strat in run:
+            p = strat.params
+            
+            # --- 修改：从我们自定义的分析器中提取最终资金 ---
+            final_value_dict = strat.analyzers.getbyname('_FinalValue').get_analysis()
+            final_value = final_value_dict.get('final_value', 2000.0)
+            
+            # 获取分析器的数据 (比如总收益率和最大回撤)
+            ret_analyzer = strat.analyzers.getbyname('_Returns').get_analysis()
+            dd_analyzer = strat.analyzers.getbyname('_DrawDown').get_analysis()
+            
+            # 收益率，如果全是亏损可能获取不到，做一下容错处理
+            total_return = ret_analyzer.get('rtot', 0) * 100 
+            max_drawdown = dd_analyzer.get('max', {}).get('drawdown', 0)
 
-    b = Bokeh(style='bar', plot_mode='single', scheme=Tradimo(), use_cdn=False)
-    cerebro.plot(b)
+            final_results_list.append({
+                '多头ATR': p.long_atr_mult,
+                '多头止盈': p.long_profit_target,
+                '空头ATR': p.short_atr_mult,
+                '空头止盈': p.short_profit_target,
+                '最终资金': round(final_value, 2),
+                '总收益率(%)': round(total_return, 2),
+                '最大回撤(%)': round(max_drawdown, 2)
+            })
 
-    portfolio_stats = strat.analyzers.getbyname('_TimeReturn')
-    returns = portfolio_stats.get_analysis()
-
-    returns_series = pd.Series(returns)
-    returns_series.index = pd.to_datetime(returns_series.index)
-    returns_series.index = returns_series.index.tz_localize(None)
-
-    print("正在生成 QuantStats 报告...")
-    qs.reports.html(returns_series, output='strategy_report.html', title='Crypto RSRS MACD 多空策略回测')
-    print("报告生成完毕！请在文件夹中双击打开 strategy_report.html")
+    # 6. 使用 Pandas 对结果进行排序并输出
+    df_results = pd.DataFrame(final_results_list)
+    
+    # 按照 "最终资金" 从高到低排序
+    df_results = df_results.sort_values(by='最终资金', ascending=False)
+    
+    print("\n" + "="*50)
+    print("参数优化完成！排名前 10 的参数组合如下：")
+    print("="*50)
+    print(df_results.head(10).to_string(index=False))
+    
+    # 可选：将所有结果保存到 CSV 慢慢分析
+    df_results.to_csv("optimization_results.csv", index=False)
+    print("\n完整优化结果已保存到 optimization_results.csv")
