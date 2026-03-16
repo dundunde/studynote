@@ -19,7 +19,7 @@ if not hasattr(np, 'int'):
     np.int = int
 os.environ["BOKEH_RESOURCES"] = "inline"
 from bokeh.resources import INLINE, Resources
-print(Resources().mode)
+# print(Resources().mode)
 
 import sys
 import ccxt
@@ -45,8 +45,6 @@ class TestStrategy(bt.Strategy):
         self.buyprice = None
         self.buycomm = None
 
-        self.count = 0
-
         # MACD
         self.macd_1 = bt.indicators.MACDHisto(
             self.data,
@@ -55,13 +53,15 @@ class TestStrategy(bt.Strategy):
             period_signal=9,
         )
 
+        self.count_1 = 0
+
         self.cross_1 = bt.indicators.CrossOver(
             self.macd_1.macd, self.macd_1.signal
         )
 
         self.data_2 = self.datas[1] if len(self.datas) >= 2 else None
         if self.data_2 is not None:
-            self.macd_2 = bt.indicators.MACD(
+            self.macd_2 = bt.indicators.MACDHisto(
                 self.data_2,
                 period_me1=12,
                 period_me2=26,
@@ -124,8 +124,14 @@ class TestStrategy(bt.Strategy):
         
         if self.cross_1[0] > 0:
             self.order = self.order_target_size(data=self.data,target=target_stake)
-        if self.cross_1[0] < 0 :
-            self.order = self.order_target_size(data=self.data,target=0)
+        if self.position:
+            if self.macd_1.histo[0] < self.macd_1.histo[-1]:
+                self.count_1 += 1
+            else:
+                self.count_1 = 0
+            if self.count_1 >=2 or self.cross_1[0] < 0 :
+                self.order = self.order_target_size(data=self.data,target=0)
+                self.count_1 = 0
 
         # if self.cross_2 is not None:
         #     if self.cross_2[0] > 0:
